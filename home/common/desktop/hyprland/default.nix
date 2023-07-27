@@ -1,10 +1,14 @@
-{ hostname, lib, pkgs, theme, ... }:
-let
-  keybinds = builtins.readFile ./config/keybinds.conf;
-  outputs = (import ./config/displays.nix { }).${hostname};
-  windowRules = import ./config/window-rules.nix { };
-in
 {
+  hostname,
+  lib,
+  pkgs,
+  theme,
+  ...
+}: let
+  keybinds = builtins.readFile ./config/keybinds.conf;
+  outputs = (import ./config/displays.nix {}).${hostname};
+  windowRules = import ./config/window-rules.nix {};
+in {
   imports = [
     ../rofi
     ../waybar
@@ -89,11 +93,12 @@ in
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 
   systemd.user.services.swaybg = {
     Unit.Description = "swaybg";
-    Install.WantedBy = [ "hyprland-session.target" ];
+    Install.WantedBy = ["hyprland-session.target"];
     Service = {
       Type = "simple";
       ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${theme.wallpaper}";

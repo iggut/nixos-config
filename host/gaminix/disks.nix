@@ -1,18 +1,10 @@
-{ disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
-let
+{disks ? ["/dev/nvme0n1"], ...}: let
   cryptroot = "cryptroot";
-  defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
-in
-{
+  defaultBtrfsOpts = ["defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime"];
+in {
   boot.initrd.luks.devices.${cryptroot} = {
     allowDiscards = true;
     preLVM = true;
-  };
-
-  environment.etc = {
-    "crypttab".text = ''
-      data  /dev/disk/by-partlabel/data  /etc/data.keyfile
-    '';
   };
 
   disko.devices = {
@@ -28,9 +20,9 @@ in
           format = "gpt";
           partitions = [
             {
-              name = "ESP";
+              name = "boot";
               start = "0%";
-              end = "512MiB";
+              end = "1024MiB";
               bootable = true;
               fs-type = "fat32";
               content = {
@@ -41,17 +33,17 @@ in
             }
             {
               name = "luks";
-              start = "512MiB";
+              start = "1024MiB";
               end = "100%";
               content = {
                 type = "luks";
                 name = "${cryptroot}";
-                extraOpenArgs = [ "--allow-discards" ];
+                extraOpenArgs = ["--allow-discards"];
 
                 content = {
                   type = "btrfs";
                   # Override existing partition
-                  extraArgs = [ "-f" ];
+                  extraArgs = ["-f"];
                   subvolumes = {
                     "@" = {
                       mountpoint = "/";
@@ -75,51 +67,13 @@ in
                     };
                     "@swap" = {
                       mountpoint = "/.swap";
-                      mountOptions = [ "defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime" ];
+                      mountOptions = ["defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime"];
                     };
                   };
                 };
               };
             }
           ];
-        };
-      };
-
-      # 2TB data drive. LUKS encrypted with single btrfs subvolume.
-      nvme1 = {
-        device = builtins.elemAt disks 1;
-        type = "disk";
-        content = {
-          type = "table";
-          format = "gpt";
-          partitions = [{
-            name = "data";
-            start = "0%";
-            end = "100%";
-            content = {
-              type = "luks";
-              name = "data";
-              extraOpenArgs = [ "--allow-discards" ];
-              # Make sure there is no trailing newline in keyfile if used for interactive unlock.
-              # Use `echo -n "password" > /tmp/secret.key`
-              keyFile = "/tmp/data.keyfile";
-
-              # Don't try to unlock this drive early in the boot.
-              initrdUnlock = false;
-
-              content = {
-                type = "btrfs";
-                # Override existing partition
-                extraArgs = [ "-f" ];
-                subvolumes = {
-                  "@data" = {
-                    mountpoint = "/home/jon/data";
-                    mountOptions = defaultBtrfsOpts;
-                  };
-                };
-              };
-            };
-          }];
         };
       };
     };

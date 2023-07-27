@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   imports = [
     ../common/services/files.nix
     ../common/services/homepage.nix
@@ -9,8 +9,8 @@
 
   # Firewall port for NFS
   networking.firewall = {
-    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
-    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedTCPPorts = [111 2049 4000 4001 4002 20048];
+    allowedUDPPorts = [111 2049 4000 4001 4002 20048];
   };
 
   services = {
@@ -36,14 +36,13 @@
       enable = true;
       guiAddress = "thor.tailnet-d5da.ts.net:8384";
       configDir = "/data/apps/syncthing";
-      user = "jon";
+      user = "iggut";
       group = "users";
     };
   };
 
   systemd.services.duplicati.serviceConfig = {
     Group = lib.mkForce "users";
-    User = lib.mkForce "jon";
+    User = lib.mkForce "iggut";
   };
 }
-

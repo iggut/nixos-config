@@ -1,4 +1,9 @@
-{ desktop, pkgs, theme, ... }: {
+{
+  desktop,
+  pkgs,
+  theme,
+  ...
+}: {
   imports = [
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix
@@ -25,7 +30,7 @@
   programs = {
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "jon" ];
+      polkitPolicyOwners = ["iggut"];
     };
 
     dconf.enable = true;
@@ -51,10 +56,10 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [ "${theme.fonts.default.name}" "${theme.fonts.emoji.name}" ];
-        sansSerif = [ "${theme.fonts.default.name}" "${theme.fonts.emoji.name}" ];
-        monospace = [ "${theme.fonts.monospace.name}" ];
-        emoji = [ "${theme.fonts.emoji.name}" ];
+        serif = ["${theme.fonts.default.name}" "${theme.fonts.emoji.name}"];
+        sansSerif = ["${theme.fonts.default.name}" "${theme.fonts.emoji.name}"];
+        monospace = ["${theme.fonts.monospace.name}"];
+        emoji = ["${theme.fonts.emoji.name}"];
       };
     };
   };

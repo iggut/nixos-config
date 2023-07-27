@@ -1,27 +1,31 @@
-{ config, ... }:
-let
+{config, ...}: let
   internalDomain = "tailnet-d5da.ts.net";
   externalDomain = "jnsgr.uk";
 
-  mkLB = address: { loadBalancer = { servers = [{ url = "${address}"; }]; }; };
+  mkLB = address: {loadBalancer = {servers = [{url = "${address}";}];};};
 
-  mkTsRouter = { name, middlewares ? [ ] }: {
+  mkTsRouter = {
+    name,
+    middlewares ? [],
+  }: {
     inherit middlewares;
     rule = "Host(`thor.${internalDomain}`) && Path(`/${name}`) || PathPrefix(`/${name}`)";
     service = name;
-    entryPoints = [ "websecure" ];
+    entryPoints = ["websecure"];
     tls.certresolver = "tailscale";
   };
 
-  mkExtRouter = { subdomain, middlewares ? [ ] }: {
+  mkExtRouter = {
+    subdomain,
+    middlewares ? [],
+  }: {
     inherit middlewares;
     rule = "Host(`${subdomain}.${externalDomain}`)";
     service = subdomain;
-    entryPoints = [ "websecure" ];
+    entryPoints = ["websecure"];
     tls.certresolver = "letsencrypt";
   };
-in
-{
+in {
   # Set an environment variable that points Traefik to the location of a file
   # that holds a DigitalOcean API key.
   systemd.services.traefik.environment = {
@@ -40,7 +44,7 @@ in
             storage = "${config.services.traefik.dataDir}/acme.json";
             dnsChallenge.provider = "digitalocean";
           };
-          tailscale.tailscale = { };
+          tailscale.tailscale = {};
         };
         entryPoints = {
           web = {
@@ -56,25 +60,25 @@ in
       dynamicConfigOptions = {
         http = {
           middlewares = {
-            sabnzbd-strip-prefix.stripPrefix.prefixes = [ "/sabnzbd" ];
+            sabnzbd-strip-prefix.stripPrefix.prefixes = ["/sabnzbd"];
           };
 
           routers = {
-            backup = mkExtRouter { subdomain = "backup"; };
-            files = mkExtRouter { subdomain = "files"; };
-            dash = mkExtRouter { subdomain = "dash"; };
+            backup = mkExtRouter {subdomain = "backup";};
+            files = mkExtRouter {subdomain = "files";};
+            dash = mkExtRouter {subdomain = "dash";};
 
-            freyja-syncthing = mkExtRouter { subdomain = "freyja.sync"; };
-            kara-syncthing = mkExtRouter { subdomain = "kara.sync"; };
-            thor-syncthing = mkExtRouter { subdomain = "thor.sync"; };
+            freyja-syncthing = mkExtRouter {subdomain = "freyja.sync";};
+            gaminix-syncthing = mkExtRouter {subdomain = "gaminix.sync";};
+            thor-syncthing = mkExtRouter {subdomain = "thor.sync";};
 
-            prowlarr = mkTsRouter { name = "prowlarr"; };
-            radarr = mkTsRouter { name = "radarr"; };
-            sonarr = mkTsRouter { name = "sonarr"; };
+            prowlarr = mkTsRouter {name = "prowlarr";};
+            radarr = mkTsRouter {name = "radarr";};
+            sonarr = mkTsRouter {name = "sonarr";};
 
             sabnzbd = mkTsRouter {
               name = "sabnzbd";
-              middlewares = [ "sabnzbd-strip-prefix" ];
+              middlewares = ["sabnzbd-strip-prefix"];
             };
           };
 
@@ -84,7 +88,7 @@ in
             dash = mkLB "http://localhost:8082";
 
             "freyja.sync" = mkLB "http://freyja.${internalDomain}:8384";
-            "kara.sync" = mkLB "http://kara.${internalDomain}:8384";
+            "gaminix.sync" = mkLB "http://gaminix.${internalDomain}:8384";
             "thor.sync" = mkLB "http://thor.${internalDomain}:8384";
 
             prowlarr = mkLB "http://localhost:9696";

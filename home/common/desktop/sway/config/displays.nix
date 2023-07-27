@@ -1,5 +1,5 @@
 _: {
-  kara = {
+  gaminix = {
     workspace-assignments = [
       {
         workspace = "1";
@@ -48,16 +48,18 @@ _: {
   };
 
   freyja = {
-    workspace-assignments = [ ];
+    workspace-assignments = [];
     kanshi-profiles = rec {
       default = {
-        outputs = [{
-          status = "enable";
-          criteria = "eDP-1";
-          position = "0,0";
-          scale = 1.5;
-          mode = "2880x1800@60.001Hz";
-        }];
+        outputs = [
+          {
+            status = "enable";
+            criteria = "eDP-1";
+            position = "0,0";
+            scale = 1.5;
+            mode = "2880x1800@60.001Hz";
+          }
+        ];
       };
     };
   };

@@ -1,8 +1,6 @@
 _: {
-
   home.file.".config/git/allowed_signers".text = ''
-    jon@sgrs.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB9bIEMgZVBCDxBWQ4m4hQP6ZZp0P3TfzjzcgUOdbYDLAAAABHNzaDo= YK5C
-    jon@sgrs.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBC8cs1B64XqEswY5pART6yERbjUMB7RdQdT38dgkZT6AAAABHNzaDo= YK5
+    sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIMntn36Qko/UqC8tFNaVBgJUtzA/jD4FmJQ0SY5g94KgAAAACXNzaDppZ2d1dA== YK5C
   '';
 
   programs = {
@@ -16,8 +14,8 @@ _: {
     git = {
       enable = true;
 
-      userEmail = "jon@sgrs.uk";
-      userName = "Jon Seager";
+      userEmail = "igor.gutchin@gmail.com";
+      userName = "Igor G";
 
       aliases = {
         lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";

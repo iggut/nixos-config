@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -9,11 +9,17 @@
         "usbhid"
         "xhci_pci"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
+    blacklistedKernelModules = ["nouveau"];
+
+    supportedFilesystems = ["btrfs" "ntfs"];
+
+    binfmt.emulatedSystems = ["aarch64-linux"];
+
     kernelModules = [
-      "kvm_amd"
+      "kvm_intel"
       "vhost_vsock"
     ];
 
@@ -21,5 +27,3 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 }
-
-

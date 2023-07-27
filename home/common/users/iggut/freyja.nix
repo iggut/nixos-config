@@ -3,7 +3,7 @@ _: {
     enable = true;
     extraOptions = [
       "-gui-address=freyja.tailnet-d5da.ts.net:8384"
-      "-home=/home/jon/data/.syncthing"
+      "-home=/home/iggut/data/.syncthing"
     ];
   };
 }

@@ -23,65 +23,89 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/jon/crafts-flake";
+    crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/iggut/crafts-flake";
     crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
     embr.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-unstable
-    , nix-formatter-pack
-    , ...
-    } @ inputs:
-    let
-      inherit (self) outputs;
-      stateVersion = "23.05";
-      username = "jon";
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    nix-formatter-pack,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    stateVersion = "23.05";
+    username = "iggut";
 
-      libx = import ./lib { inherit inputs outputs stateVersion username; };
-    in
-    {
-      # nix build .#homeConfigurations."jon@freyja".activationPackage
-      homeConfigurations = {
-        # Desktop machines
-        "${username}@freyja" = libx.mkHome { hostname = "freyja"; desktop = "hyprland"; };
-        "${username}@kara" = libx.mkHome { hostname = "kara"; desktop = "hyprland"; };
-        # Headless machines
-        "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
-        "${username}@thor" = libx.mkHome { hostname = "thor"; };
-        "ubuntu@dev" = libx.mkHome { hostname = "dev"; user = "ubuntu"; };
+    libx = import ./lib {inherit inputs outputs stateVersion username;};
+  in {
+    # nix build .#homeConfigurations."iggut@freyja".activationPackage
+    homeConfigurations = {
+      # Desktop machines
+      "${username}@freyja" = libx.mkHome {
+        hostname = "freyja";
+        desktop = "hyprland";
       };
-
-      # nix build .#nixosConfigurations.freyja.config.system.build.toplevel
-      nixosConfigurations = {
-        # Desktop machines
-        freyja = libx.mkHost { hostname = "freyja"; desktop = "hyprland"; };
-        kara = libx.mkHost { hostname = "kara"; desktop = "hyprland"; };
-        # Headless machines
-        hugin = libx.mkHost { hostname = "hugin"; pkgsInput = nixpkgs; };
-        thor = libx.mkHost { hostname = "thor"; pkgsInput = nixpkgs; };
+      "${username}@gaminix" = libx.mkHome {
+        hostname = "gaminix";
+        desktop = "hyprland";
       };
+      # Headless machines
+      "${username}@hugin" = libx.mkHome {hostname = "hugin";};
+      "${username}@thor" = libx.mkHome {hostname = "thor";};
+      "ubuntu@dev" = libx.mkHome {
+        hostname = "dev";
+        user = "ubuntu";
+      };
+    };
 
-      # Custom packages; acessible via 'nix build', 'nix shell', etc
-      packages = libx.forAllSystems (system:
-        let pkgs = nixpkgs-unstable.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
-      );
+    # nix build .#nixosConfigurations.freyja.config.system.build.toplevel
+    nixosConfigurations = {
+      # Desktop machines
+      freyja = libx.mkHost {
+        hostname = "freyja";
+        desktop = "hyprland";
+      };
+      gaminix = libx.mkHost {
+        hostname = "gaminix";
+        desktop = "hyprland";
+      };
+      # Headless machines
+      hugin = libx.mkHost {
+        hostname = "hugin";
+        pkgsInput = nixpkgs;
+      };
+      thor = libx.mkHost {
+        hostname = "thor";
+        pkgsInput = nixpkgs;
+      };
+    };
 
-      # Custom overlays
-      overlays = import ./overlays { inherit inputs; };
+    # Custom packages; acessible via 'nix build', 'nix shell', etc
+    packages = libx.forAllSystems (
+      system: let
+        pkgs = nixpkgs-unstable.legacyPackages.${system};
+      in
+        import ./pkgs {inherit pkgs;}
+    );
 
-      # Devshell for bootstrapping
-      # Accessible via 'nix develop' or 'nix-shell' (legacy)
-      devShells = libx.forAllSystems (system:
-        let pkgs = nixpkgs-unstable.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; }
-      );
+    # Custom overlays
+    overlays = import ./overlays {inherit inputs;};
 
-      formatter = libx.forAllSystems (system:
+    # Devshell for bootstrapping
+    # Accessible via 'nix develop' or 'nix-shell' (legacy)
+    devShells = libx.forAllSystems (
+      system: let
+        pkgs = nixpkgs-unstable.legacyPackages.${system};
+      in
+        import ./shell.nix {inherit pkgs;}
+    );
+
+    formatter = libx.forAllSystems (
+      system:
         nix-formatter-pack.lib.mkFormatter {
           pkgs = nixpkgs-unstable.legacyPackages.${system};
           config.tools = {
@@ -90,19 +114,19 @@
             statix.enable = true;
           };
         }
-      );
+    );
 
-      nixConfig = {
-        substituters = [
-          "https://cache.nixos.org"
-          "https://hyprland.cachix.org"
-          "https://jnsgruk.cachix.org"
-        ];
-        trusted-public-keys = [
-          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-          "jnsgruk.cachix.org-1:Kf9JahXxCf0ElU+Uz7xKvQEQHfUtg2Z45N2NeTxuxV8="
-        ];
-      };
+    nixConfig = {
+      substituters = [
+        "https://cache.nixos.org"
+        "https://hyprland.cachix.org"
+        "https://jnsgruk.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "jnsgruk.cachix.org-1:Kf9JahXxCf0ElU+Uz7xKvQEQHfUtg2Z45N2NeTxuxV8="
+      ];
     };
+  };
 }
