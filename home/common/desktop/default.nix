@@ -4,7 +4,7 @@ in {
   imports = [
     (./. + "/${desktop}")
 
-    ../dev
+    ./dev
 
     ./alacritty.nix
     ./game.nix
@@ -74,8 +74,6 @@ in {
           };
         };
         settings = {
-          # Browser settings go here
-          "browser.startup.homepage" = "";
           # Enable HTTPS-Only Mode
           "dom.security.https_only_mode" = true;
           "dom.security.https_only_mode_ever_enabled" = true;
@@ -153,6 +151,140 @@ in {
     inav-configurator # The iNav flight control system configuration tool
     betaflight-configurator # The Betaflight flight control system configuration tool
   ];
+
+  home.file = {
+    # Add proton-ge-updater script to zsh directory
+    ".config/zsh/proton-ge-updater.sh" = {
+      source = ./scripts/proton-ge-updater.sh;
+      recursive = true;
+    };
+
+    # Add steam-library-patcher to zsh directory
+    ".config/zsh/steam-library-patcher.sh" = {
+      source = ./scripts/steam-library-patcher.sh;
+      recursive = true;
+    };
+
+    # Add user.js
+    ".mozilla/firefox/privacy/user.js" = {
+      source = ./configs/firefox/user.js;
+      recursive = true;
+    };
+
+    # Import firefox gnome theme userChrome.css
+    ".mozilla/firefox/privacy/chrome/userChrome.css" = {
+      source = ./configs/firefox/userChrome.css;
+      recursive = true;
+    };
+
+    # Import firefox gnome theme userContent.css
+    ".mozilla/firefox/privacy/chrome/userContent.css" = {
+      source = ./configs/firefox/userContent.css;
+      recursive = true;
+    };
+
+    # Import firefox gnome theme files
+    ".mozilla/firefox/privacy/chrome/cleaner_extensions_menu.css" = {
+      source = ./configs/firefox/cleaner_extensions_menu.css;
+      recursive = true;
+    };
+    ".mozilla/firefox/privacy/chrome/firefox_view_icon_change.css" = {
+      source = ./configs/firefox/firefox_view_icon_change.css;
+      recursive = true;
+    };
+    ".mozilla/firefox/privacy/chrome/spill-style-part1-file.css" = {
+      source = ./configs/firefox/spill-style-part1-file.css;
+      recursive = true;
+    };
+    ".mozilla/firefox/privacy/chrome/colored_soundplaying_tab.css" = {
+      source = ./configs/firefox/colored_soundplaying_tab.css;
+      recursive = true;
+    };
+    ".mozilla/firefox/privacy/chrome/popout_bookmarks_bar_on_hover.css" = {
+      source = ./configs/firefox/popout_bookmarks_bar_on_hover.css;
+      recursive = true;
+    };
+    ".mozilla/firefox/privacy/chrome/spill-style-part2-file.css" = {
+      source = ./configs/firefox/spill-style-part2-file.css;
+      recursive = true;
+    };
+    ".mozilla/firefox/privacy/chrome/image" = {
+      source = ./configs/firefox/image;
+      recursive = true;
+    };
+
+
+    # Add noise suppression microphone
+    #".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
+    #  source = ./configs/pipewire.conf;
+    #  recursive = true;
+    #};
+
+    # NWG config files
+    ".local/share/nwg-dock-hyprland" = {
+      source = ./configs/nwg/nwg-dock-hyprland;
+      recursive = true;
+    };
+    ".local/share/nwg-drawer" = {
+      source = ./configs/nwg/nwg-drawer; #might need this: sudo ln -s ~/.local/share/nwg-drawer /usr/share
+      recursive = true;
+    };
+
+    # Add btop config
+    ".config/btop/btop.conf" = {
+      source = ./configs/btop.conf;
+      recursive = true;
+    };
+
+    # Add custom mangohud config for CS:GO
+    ".config/MangoHud/csgo_linux64.conf" = {
+      text = ''
+        background_alpha=0
+        cpu_color=FFFFFF
+        cpu_temp
+        engine_color=FFFFFF
+        font_size=20
+        fps
+        fps_limit=0+144
+        frame_timing=0
+        gamemode
+        gl_vsync=0
+        gpu_color=FFFFFF
+        gpu_temp
+        no_small_font
+        offset_x=50
+        position=top-right
+        toggle_fps_limit=Ctrl_L+Shift_L+F1
+        vsync=1
+      '';
+      recursive = true;
+    };
+
+    # Add custom mangohud config for CS2
+    ".config/MangoHud/wine-cs2.conf" = {
+      text = ''
+        background_alpha=0
+        cpu_color=FFFFFF
+        cpu_temp
+        engine_color=FFFFFF
+        font_size=20
+        fps
+        fps_limit=0+144
+        frame_timing=0
+        gamemode
+        gl_vsync=0
+        gpu_color=FFFFFF
+        gpu_temp
+        no_small_font
+        offset_x=50
+        position=top-right
+        toggle_fps_limit=Ctrl_L+Shift_L+F1
+        vsync=1
+      '';
+      recursive = true;
+    };
+
+  };
 
   fonts.fontconfig.enable = true;
 }
