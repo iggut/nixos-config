@@ -27,9 +27,8 @@ _: {
     # assign windows to workspaces
     "workspace 1 silent, class:[Ff]irefox"
     "workspace 2 silent, class:[Oo]bsidian"
-    "workspace 2 silent, class:google-chrome"
     "workspace 3 silent, class:[Rr]ambox"
-    "workspace 4 silent, class:[Ss]ignal"
+    "workspace 4 silent, class:steam"
     "workspace 5 silent, class:code-url-handler"
     "workspace 6 silent, class:startup-kitty"
     "workspace 7 silent, class:startup-monitor"
