@@ -39,10 +39,10 @@ _: {
           };
         };
         commit = {
-          gpgSign = true;
+          #gpgSign = true;
         };
         tag = {
-          gpgSign = true;
+          #gpgSign = true;
         };
       };
 
