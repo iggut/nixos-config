@@ -42,7 +42,7 @@
 
     libx = import ./lib {inherit inputs outputs stateVersion username;};
   in {
-    # nix build .#homeConfigurations."iggut@freyja".activationPackage
+    # nix build .#homeConfigurations."iggut@gaminix".activationPackage
     homeConfigurations = {
       # Desktop machines
       "${username}@freyja" = libx.mkHome {
@@ -62,7 +62,7 @@
       };
     };
 
-    # nix build .#nixosConfigurations.freyja.config.system.build.toplevel
+    # nix build .#nixosConfigurations.gaminix.config.system.build.toplevel
     nixosConfigurations = {
       # Desktop machines
       freyja = libx.mkHost {

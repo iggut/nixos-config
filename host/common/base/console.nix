@@ -22,7 +22,7 @@ in
     extraConfig = ''
       font-size=14
 
-      xkb-layout=gb
+      xkb-layout=us
 
       palette=custom
       palette-black=${hexToRgb colours.surface1}

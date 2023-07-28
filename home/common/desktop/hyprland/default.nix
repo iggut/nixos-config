@@ -23,7 +23,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland-hidpi;
+    package = pkgs.hyprland;
     systemdIntegration = true;
 
     xwayland = {
@@ -44,6 +44,7 @@ in {
       };
 
       dwindle = {
+        pseudotile = true;
         preserve_split = true;
         force_split = 2;
       };
@@ -55,8 +56,8 @@ in {
       };
 
       input = {
-        kb_layout = "gb";
-        follow_mouse = 2;
+        kb_layout = "us";
+        follow_mouse = 1;
         repeat_rate = 50;
         repeat_delay = 300;
       };
@@ -71,12 +72,19 @@ in {
         "col.shadow" = "rgba(00000099)";
       };
 
-      animation = [
-        "border, 1, 2, default"
-        "fade, 1, 4, default"
-        "windows, 1, 3, default, popin 80%"
-        "workspaces, 1, 2, default, slide"
-      ];
+      animations = {
+        enabled = true;
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        animation = [
+          "border, 1, 10, default"
+          "fade, 1, 7, default"
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "workspaces, 1, 6, default, slide"
+        ];        
+      };
+
+
     };
 
     extraConfig = ''

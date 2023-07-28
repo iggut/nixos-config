@@ -36,7 +36,7 @@
       gaps = {inner = 8;};
 
       input = {
-        "*" = {xkb_layout = "gb";};
+        "*" = {xkb_layout = "us";};
         "type:touchpad" = {tap = "enabled";};
       };
 

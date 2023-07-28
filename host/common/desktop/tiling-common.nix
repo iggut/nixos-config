@@ -1,6 +1,15 @@
-{ pkgs, runner, lib, ... }: {
+{
+  pkgs,
+  runner,
+  lib,
+  ...
+}: {
   environment = {
     variables.NIXOS_OZONE_WL = "1";
+    variables.XDG_SESSION_TYPE = "wayland";
+    variables.XDG_SESSION_DESKTOP = "Hyprland";
+    variables.XDG_CURRENT_DESKTOP = "Hyprland";
+    variables.WLR_NO_HARDWARE_CURSORS = "1";
 
     systemPackages = with pkgs; [
       polkit_gnome
@@ -13,7 +22,7 @@
     dbus = {
       enable = true;
       # Make the gnome keyring work properly
-      packages = [ pkgs.gnome3.gnome-keyring pkgs.gcr ];
+      packages = [pkgs.gnome3.gnome-keyring pkgs.gcr];
     };
 
     gnome = {
@@ -21,15 +30,11 @@
       sushi.enable = true;
     };
 
-    greetd = {
-      enable = true;
-      restart = false;
-      settings = {
-        default_session = {
-          command = ''
-            ${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet -r --asterisks --time \
-              --cmd ${runner}
-          '';
+    xserver = {
+      enable = true; # Enable the X11 windowing system
+      displayManager = {
+        gdm = {
+          enable = true;
         };
       };
     };
@@ -43,7 +48,7 @@
         # allow wayland lockers to unlock the screen
         swaylock.text = "auth include login";
         # unlock gnome keyring automatically with greetd
-        greetd.enableGnomeKeyring = true;
+        gdm.enableGnomeKeyring = true;
       };
     };
   };

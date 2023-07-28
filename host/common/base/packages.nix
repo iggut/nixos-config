@@ -26,5 +26,6 @@
     vim
     wget
     yq-go
+    kitty
   ];
 }

@@ -20,6 +20,9 @@
 
     kernelModules = [
       "kvm_intel"
+      "nvidia"
+      "nvidia_drm"
+      "nvidia_modeset"
       "vhost_vsock"
     ];
 

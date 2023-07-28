@@ -50,9 +50,6 @@
       theme.fonts.monospace.package
     ];
 
-    # Use fonts specified by user rather than default ones
-    enableDefaultFonts = false;
-
     fontconfig = {
       enable = true;
       defaultFonts = {

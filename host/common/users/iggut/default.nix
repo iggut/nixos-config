@@ -7,6 +7,7 @@
 in {
   users.users.iggut = {
     isNormalUser = true;
+    initialPassword = "nixos";
     shell = pkgs.zsh;
     extraGroups =
       [
