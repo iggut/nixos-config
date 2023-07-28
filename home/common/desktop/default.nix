@@ -5,6 +5,7 @@
     ../dev
 
     ./alacritty.nix
+    ./game.nix
     ./gtk.nix
     ./qt.nix
     ./xdg.nix

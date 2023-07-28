@@ -1,5 +1,5 @@
 {
-  description = "jnsgruk's nixos configuration";
+  description = "iggut's nixos configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -25,6 +25,7 @@
 
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/iggut/crafts-flake";
     crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
     embr.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
@@ -34,6 +35,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nix-formatter-pack,
+    chaotic,
     ...
   } @ inputs: let
     inherit (self) outputs;
