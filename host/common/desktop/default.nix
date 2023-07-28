@@ -21,8 +21,21 @@
     "rd.udev.log_priority=3"
     "vt.global_cursor_default=0"
   ];
+  # improvement for games using lots of mmaps (same as steam deck)
+  boot.kernel.sysctl = {"vm.max_map_count" = 2147483642;};
 
   hardware.opengl.enable = true;
+
+  # Automatically tune nice levels
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+  };
+
+  hardware = {
+    steam-hardware.enable = true;
+    # xpadneo.enable = true;
+  };
 
   # Enable location services
   location.provider = "geoclue2";
@@ -37,6 +50,37 @@
 
     # Archive manager
     file-roller.enable = true;
+
+    # Enable gamemode
+    gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 10;
+        };
+        custom = {
+          start = "notify-send -a 'Gamemode' 'Optimizations activated'";
+          end = "notify-send -a 'Gamemode' 'Optimizations deactivated'";
+        };
+      };
+    };
+
+    steam = {
+      enable = true;
+      #gamescopeSession.enable = true;
+      #gamescopeSession.args = ["--prefer-vk-device 8086:9bc4"];
+    };
+
+    #Enable Gamescope
+    gamescope = {
+      enable = true;
+      package = pkgs.gamescope;
+      capSysNice = true;
+      #args = ["--prefer-vk-device 8086:9bc4"];
+    };
+
   };
 
   fonts = {
