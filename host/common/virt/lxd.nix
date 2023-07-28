@@ -8,7 +8,7 @@ in
   imports = [ "${inputs.nixpkgs-unstable}/${lxdModule}" ];
   virtualisation = {
     lxd = {
-      enable = true;
+     # enable = true;
       zfsSupport = true;
       ui = {
         enable = true;

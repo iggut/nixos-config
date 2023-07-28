@@ -15,7 +15,7 @@ if [[ -z "$TARGET_HOST" ]]; then
     exit 1
 fi
 
-if [ ! -e "./disko-config.nix" ]; then
+if [ ! -e "./host/gaminix/disks.nix" ]; then
   echo "ERROR! $(basename "${0}") could not find the required file disko-config.nix"
   exit 1
 fi
@@ -34,7 +34,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         --no-write-lock-file \
         -- \
         --mode zap_create_mount \
-        "./hosts/${TARGET_HOST}/disko-config.nix"
+        "./host/${TARGET_HOST}/disks.nix"
 
     sudo nixos-install --flake ".#${TARGET_HOST}"
 

@@ -10,6 +10,7 @@ in {
     ./game.nix
     ./gtk.nix
     ./qt.nix
+    ./vscode.nix
     ./xdg.nix
     ./zathura.nix
   ];
