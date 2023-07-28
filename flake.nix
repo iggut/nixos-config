@@ -62,6 +62,10 @@
       # Headless machines
       "${username}@hugin" = libx.mkHome {hostname = "hugin";};
       "${username}@thor" = libx.mkHome {hostname = "thor";};
+      "ubuntu@dev" = libx.mkHome {
+        hostname = "dev";
+        user = "ubuntu";
+      };
     };
 
     # nix build .#nixosConfigurations.gaminix.config.system.build.toplevel
