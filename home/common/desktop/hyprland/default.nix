@@ -6,6 +6,7 @@
   ...
 }: let
   keybinds = builtins.readFile ./config/keybinds.conf;
+  hyprexec = builtins.readFile ./config/hyprexec.conf;
   outputs = (import ./config/displays.nix {}).${hostname};
   windowRules = import ./config/window-rules.nix {};
 in {
@@ -28,7 +29,6 @@ in {
 
     xwayland = {
       enable = true;
-      hidpi = true;
     };
 
     settings = {
@@ -81,14 +81,13 @@ in {
           "windows, 1, 7, myBezier"
           "windowsOut, 1, 7, default, popin 80%"
           "workspaces, 1, 6, default, slide"
-        ];        
+        ];
       };
-
-
     };
 
     extraConfig = ''
       ${keybinds}
+      ${hyprexec}
     '';
   };
 
