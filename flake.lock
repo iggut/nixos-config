@@ -534,6 +534,21 @@
         "type": "gitlab"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1690513145,
+        "narHash": "sha256-dy6mb2wA3GWC6Tw0eB6sgQ2oktTCEQa19ZFZOJK19i4=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "710ef3ea263266aec846ba045cf38c10033534a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "river-git-src": {
       "flake": false,
       "locked": {
@@ -565,6 +580,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nur": "nur",
         "sf-pro-fonts-src": "sf-pro-fonts-src",
         "vscode-server": "vscode-server"
       }

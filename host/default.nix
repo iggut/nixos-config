@@ -4,6 +4,7 @@
     (./. + "/${hostname}/boot.nix")
     (./. + "/${hostname}/hardware.nix")
     inputs.chaotic.nixosModules.default 
+    inputs.nur.nixosModules.nur
 
     ./common/base
     ./common/users/${username}

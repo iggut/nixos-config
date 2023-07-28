@@ -25,6 +25,8 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/iggut/crafts-flake";
     crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
@@ -37,6 +39,7 @@
     nixpkgs-unstable,
     nix-formatter-pack,
     chaotic,
+    nur,
     ...
   } @ inputs: let
     inherit (self) outputs;
