@@ -24,6 +24,8 @@
       polkit_gnome
       gnome.nautilus
       gnome.zenity
+      ananicy-cpp-rules
+      input-leap_git
     ];
   };
 

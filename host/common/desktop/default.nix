@@ -2,6 +2,7 @@
   desktop,
   pkgs,
   theme,
+  inputs,
   ...
 }: {
   imports = [
@@ -76,7 +77,7 @@
     #Enable Gamescope
     gamescope = {
       enable = true;
-      package = pkgs.gamescope;
+      package = pkgs.gamescope_git;
       capSysNice = true;
       #args = ["--prefer-vk-device 8086:9bc4"];
     };

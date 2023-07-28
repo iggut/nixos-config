@@ -52,7 +52,6 @@
     prusa-slicer # 3D printer slicer software for slicing 3D models into printable layers
     inav-configurator # The iNav flight control system configuration tool
     betaflight-configurator # The Betaflight flight control system configuration tool
-
   ];
 
   fonts.fontconfig.enable = true;
