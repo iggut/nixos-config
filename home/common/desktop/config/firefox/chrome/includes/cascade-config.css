@@ -6,7 +6,7 @@
   /*  Global Border Radius
    *  applied to ALL UI elements
    */
-  --uc-border-radius: 0px;
+  --uc-border-radius: 9px;
 
   /*  The distance the Statuspanel floats
    *  away from the window border
@@ -40,7 +40,7 @@
  *  4 – toolbar on bottom
  */
 :root {
-  --uc-toolbar-position: 0;
+  --uc-toolbar-position: 4;
 }
 
 /*  Darken the Personal Toolbar by X amount
@@ -75,7 +75,7 @@
    *  1 – tabs on the right
    *  3 – tabs on the left
    */
-  --uc-urlbar-position: 1;
+  --uc-urlbar-position: 3;
 }
 
 /* Disable the Navigation Buttons */
@@ -152,7 +152,7 @@
   /*  Amount of Glow to add to the container indicator
    *  Setting it to 0 disables the Glow
    */
-  --uc-identity-glow: 0 1px 10px 1px;
+  --uc-identity-glow: 2 2px 10px 2px;
 }
 
 /* Hide the secondary Tab Label
