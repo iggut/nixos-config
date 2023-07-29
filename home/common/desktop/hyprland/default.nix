@@ -27,9 +27,9 @@ in {
     package = pkgs.hyprland;
     systemdIntegration = true;
 
-    xwayland = {
-      enable = true;
-    };
+    #xwayland = {
+    #  enable = true;
+    #};
 
     settings = {
       inherit (outputs) monitor workspace;

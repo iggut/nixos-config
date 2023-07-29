@@ -1,5 +1,9 @@
-{ pkgs, desktop, ... }:
-let inherit (pkgs.nur.repos.rycee) firefox-addons;
+{
+  pkgs,
+  desktop,
+  ...
+}: let
+  inherit (pkgs.nur.repos.rycee) firefox-addons;
 in {
   imports = [
     (./. + "/${desktop}")
@@ -114,7 +118,7 @@ in {
           "dom.events.asyncClipboard.clipboardItem" = true;
         };
       };
-    };    
+    };
   };
 
   home.packages = with pkgs; [
@@ -172,48 +176,10 @@ in {
       recursive = true;
     };
 
-    # Import firefox gnome theme userChrome.css
-    ".mozilla/firefox/privacy/chrome/userChrome.css" = {
-      source = ./config/firefox/userChrome.css;
+    ".mozilla/firefox/privacy/chrome" = {
+      source = ./config/firefox/chrome;
       recursive = true;
     };
-
-    # Import firefox gnome theme userContent.css
-    ".mozilla/firefox/privacy/chrome/userContent.css" = {
-      source = ./config/firefox/userContent.css;
-      recursive = true;
-    };
-
-    # Import firefox gnome theme files
-    ".mozilla/firefox/privacy/chrome/cleaner_extensions_menu.css" = {
-      source = ./config/firefox/cleaner_extensions_menu.css;
-      recursive = true;
-    };
-    ".mozilla/firefox/privacy/chrome/firefox_view_icon_change.css" = {
-      source = ./config/firefox/firefox_view_icon_change.css;
-      recursive = true;
-    };
-    ".mozilla/firefox/privacy/chrome/spill-style-part1-file.css" = {
-      source = ./config/firefox/spill-style-part1-file.css;
-      recursive = true;
-    };
-    ".mozilla/firefox/privacy/chrome/colored_soundplaying_tab.css" = {
-      source = ./config/firefox/colored_soundplaying_tab.css;
-      recursive = true;
-    };
-    ".mozilla/firefox/privacy/chrome/popout_bookmarks_bar_on_hover.css" = {
-      source = ./config/firefox/popout_bookmarks_bar_on_hover.css;
-      recursive = true;
-    };
-    ".mozilla/firefox/privacy/chrome/spill-style-part2-file.css" = {
-      source = ./config/firefox/spill-style-part2-file.css;
-      recursive = true;
-    };
-    ".mozilla/firefox/privacy/chrome/image" = {
-      source = ./config/firefox/image;
-      recursive = true;
-    };
-
 
     # Add noise suppression microphone
     #".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
@@ -284,7 +250,6 @@ in {
       '';
       recursive = true;
     };
-
   };
 
   fonts.fontconfig.enable = true;
