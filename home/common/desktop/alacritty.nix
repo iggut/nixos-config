@@ -1,8 +1,6 @@
-{ theme, ... }:
-let
+{theme, ...}: let
   inherit (theme) colours;
-in
-{
+in {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -12,8 +10,8 @@ in
 
       window = {
         padding = {
-          x = 20;
-          y = 20;
+          x = 10;
+          y = 10;
         };
       };
 
@@ -26,7 +24,7 @@ in
 
       font = {
         normal.family = "${theme.fonts.monospace.name}";
-        size = 14;
+        size = 11;
       };
 
       colors = {

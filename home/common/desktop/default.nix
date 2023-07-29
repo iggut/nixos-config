@@ -250,6 +250,51 @@ in {
       '';
       recursive = true;
     };
+
+    # fix icons for couple custom windows
+    ".local/share/applications/startup-alacritty.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Type=Application
+        TryExec=alacritty
+        Exec=/home/iggut/.local/share/applications/startup-alacritty.sh
+        Icon=/home/iggut/.local/share/nwg-dock-hyprland/images/startup-alacritty.svg
+        Terminal=false
+        Categories=System;TerminalEmulator;
+        StartupNotify=true
+        Name=startup-alacritty
+        GenericName=Terminal
+        Comment=A fast, cross-platform, OpenGL terminal emulator
+        Actions=New;
+
+        [Desktop Action New]
+        Name=New Terminal
+        Exec=alacritty
+      '';
+      recursive = true;
+    };
+    ".local/share/applications/task-managers.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Type=Application
+        TryExec=alacritty
+        Exec=/home/iggut/.local/share/applications/task-managers.sh
+        Icon=/home/iggut/.local/share/nwg-dock-hyprland/images/task-managers.svg
+        Terminal=false
+        Categories=System;TerminalEmulator;
+        StartupNotify=true
+        Name=task-managers
+        GenericName=Terminal
+        Comment=A fast, cross-platform, OpenGL terminal emulator
+        StartupWMClass=task-managers
+        Actions=New;
+
+        [Desktop Action New]
+        Name=New Terminal
+        Exec=alacritty
+      '';
+      recursive = true;
+    };
   };
 
   fonts.fontconfig.enable = true;

@@ -30,8 +30,8 @@ _: {
     "workspace 3 silent, class:[Rr]ambox"
     "workspace 4 silent, class:steam"
     "workspace 5 silent, class:code-url-handler"
-    "workspace 6 silent, class:startup-kitty"
-    "workspace 7 silent, class:startup-monitor"
+    "workspace 6 silent, class:startup-alacritty"
+    "workspace 7 silent, class:task-managers"
 
     # throw sharing indicators away
     "workspace special silent, title:^(Firefox — Sharing Indicator)$"
