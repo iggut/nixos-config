@@ -17,7 +17,7 @@
 
     /*  Cascades main Colour Scheme */
     --uc-base-colour: #24273a;
-    --uc-highlight-colour: #1e2030;
+    --uc-highlight-colour: #101320;
     --uc-inverted-colour: #cad3f5;
     --uc-muted-colour: #6e738d;
     --uc-accent-colour: var(--uc-identity-colour-purple);
@@ -38,10 +38,10 @@
     --uc-identity-colour-purple: #8839ef;
 
     /*  Cascades main Colour Scheme */
-    --uc-base-colour: #eff1f5;
-    --uc-highlight-colour: #dce0e8;
-    --uc-inverted-colour: #4c4f69;
-    --uc-muted-colour: #9ca0b0;
+    --uc-base-colour: #24273a;
+    --uc-highlight-colour: #101320;
+    --uc-inverted-colour: #cad3f5;
+    --uc-muted-colour: #6e738d;
     --uc-accent-colour: var(--uc-identity-colour-purple);
   }
 }
