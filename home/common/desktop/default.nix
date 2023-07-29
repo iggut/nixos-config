@@ -203,6 +203,12 @@ in {
       recursive = true;
     };
 
+    # Add webcord theme
+    ".config/WebCord/Themes/comfy" = {
+      source = ./config/comfy;
+      recursive = true;
+    };
+
     # Add custom mangohud config for CS:GO
     ".config/MangoHud/csgo_linux64.conf" = {
       text = ''

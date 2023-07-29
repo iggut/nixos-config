@@ -1,6 +1,6 @@
 /* Add styles for the focused state of the tab */
 .tabbrowser-tab[selected="true"] {
-  color: #665ed5 !important;
+  color: #7289da !important;
   background-color: #24273a !important;
 }
 .tabbrowser-tab {
