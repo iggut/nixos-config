@@ -1,10 +1,10 @@
 /* Add styles for the focused state of the tab */
 .tabbrowser-tab[selected="true"] {
   color: #665ed5 !important;
-  background-color: #1e2030 !important;
+  background-color: #24273a !important;
 }
 .tabbrowser-tab {
-  background-color: #1e2030 !important;
+  background-color: #24273a !important;
 }
 /* remove gap after pinned tabs */
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
@@ -239,7 +239,7 @@
     [disabled="true"],
     [open]
   ):hover {
-  background-color: #393939 !important;
+  background-color: #101320 !important;
 }
 
 #personal-bookmarks
@@ -248,11 +248,11 @@
     .subviewbutton,
     [disabled="true"]
   ):hover:active {
-  background-color: #555555 !important;
+  background-color: #6e738d !important;
 }
 
 #personal-bookmarks
   #PlacesToolbarItems
   > toolbarbutton.bookmark-item[open="true"] {
-  background-color: #555555 !important;
+  background-color: #6e738d !important;
 }
