@@ -170,6 +170,18 @@ in {
       recursive = true;
     };
 
+    # Add catppuccin mocha steam skin
+    ".local/share/Steam/steamui/libraryroot.custom.css" = {
+      source = "${(pkgs.callPackage ./self-built/adwaita-for-steam {})}/build/libraryroot.custom.css";
+      recursive = true;
+    };
+
+    # Enable steam beta
+    ".local/share/Steam/package/beta" = {
+      text = "publicbeta";
+      recursive = true;
+    };
+
     # Add user.js
     ".mozilla/firefox/privacy/user.js" = {
       source = ./config/firefox/user.js;

@@ -1,16 +1,21 @@
-{ inputs, outputs, ... }:
-let
+{
+  inputs,
+  outputs,
+  ...
+}: let
   inherit (inputs.nixpkgs) lib;
   inherit ((import ./colours.nix)) colours;
-  libx = import ./lib.nix { inherit lib; };
+  libx = import ./lib.nix {inherit lib;};
 
   pkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
-    overlays = [ outputs.overlays.fonts ];
-    config = { allowUnfree = true; joypixels.acceptLicense = true; };
+    overlays = [outputs.overlays.fonts];
+    config = {
+      allowUnfree = true;
+      joypixels.acceptLicense = true;
+    };
   };
-in
-{
+in {
   inherit (libx) hexToRgb;
 
   # Note that there are still places not covered by colour choices here such as:
@@ -22,17 +27,20 @@ in
   wallpaper = ./wallpapers/space-clouds.png;
 
   gtkTheme = {
-    name = "Catppuccin-Macchiato-Standard-Blue-dark";
+    name = "Catppuccin-Mocha-Standard-Lavender-dark";
     package = pkgs.catppuccin-gtk.override {
       size = "standard";
-      variant = "macchiato";
-      accents = [ "blue" ];
+      variant = "mocha";
+      accents = ["lavender"];
     };
   };
 
   qtTheme = {
-    name = "Catppuccin-Macchiato-Blue";
-    package = pkgs.catppuccin-kvantum.override { variant = "Macchiato"; accent = "Blue"; };
+    name = "Catppuccin-Mocha-Mauve";
+    package = pkgs.catppuccin-kvantum.override {
+      variant = "Mocha";
+      accent = "Mauve";
+    };
   };
 
   iconTheme = rec {
@@ -59,7 +67,7 @@ in
     };
     monospace = {
       name = "MesloLGSDZ Nerd Font Mono";
-      package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };
+      package = pkgs.nerdfonts.override {fonts = ["Meslo"];};
     };
     emoji = {
       name = "Joypixels";

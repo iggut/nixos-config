@@ -24,8 +24,15 @@
       polkit_gnome
       gnome.nautilus
       gnome.zenity
+      gnome.dconf-editor
+      gnome.nixos-gsettings-overrides
       ananicy-cpp-rules
       input-leap_git
+      catppuccin-gtk
+      catppuccin-kvantum
+      glib
+      gsettings-qt
+      gsettings-desktop-schemas
     ];
   };
 

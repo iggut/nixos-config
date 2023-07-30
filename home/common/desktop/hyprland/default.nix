@@ -3,6 +3,7 @@
   lib,
   pkgs,
   theme,
+  config,
   ...
 }: let
   keybinds = builtins.readFile ./config/keybinds.conf;
@@ -113,7 +114,8 @@ in {
     CLUTTER_BACKEND = "wayland";
     GDK_BACKEND = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
-    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
@@ -128,5 +130,13 @@ in {
       ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${theme.wallpaper}";
       Restart = "on-failure";
     };
+  };
+
+  systemd.user.sessionVariables = {
+    PATH = "/run/wrappers/bin:/home/iggut/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
+    QT_QPA_PLATFORM = "${config.home.sessionVariables.QT_QPA_PLATFORM}";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_QPA_PLATFORMTHEME = "${config.home.sessionVariables.QT_QPA_PLATFORMTHEME}";
   };
 }
