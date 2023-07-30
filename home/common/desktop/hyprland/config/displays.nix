@@ -1,12 +1,12 @@
 _: {
   gaminix = {
     workspace = [
-      "1, monitor:Acer Technologies XZ322Q 1049010E43900, default:true"
-      "2, monitor:Acer Technologies XZ322Q 1049010E43900"
+      "1, monitor:Samsung Electric Company SAMSUNG 0x01000E00, default:true"
+      "2, monitor:Acer Technologies XZ322Q 1049010E43900, default:true"
       "3, monitor:Acer Technologies XZ322Q 1049010E43900"
       "4, monitor:Acer Technologies XZ322Q 1049010E43900"
       "5, monitor:Acer Technologies XZ322Q 1049010E43900"
-      "6, monitor:Samsung Electric Company SAMSUNG 0x01000E00, default:true"
+      "6, monitor:Samsung Electric Company SAMSUNG 0x01000E00"
       "7, monitor:Samsung Electric Company SAMSUNG 0x01000E00"
     ];
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs = {
     tmate.enable = true;
 
@@ -20,14 +20,16 @@
         set-option -ga terminal-overrides ",alacritty:Tc"
       '';
 
-      plugins = with pkgs; [{
-        plugin = tmuxPlugins.catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavour 'macchiato'
-          set -g @catppuccin_host 'on'
-          set -g @catppuccin_window_tabs_enabled 'on'
-        '';
-      }];
+      plugins = with pkgs; [
+        {
+          plugin = tmuxPlugins.catppuccin;
+          extraConfig = ''
+            set -g @catppuccin_flavour 'mocha'
+            set -g @catppuccin_host 'on'
+            set -g @catppuccin_window_tabs_enabled 'on'
+          '';
+        }
+      ];
     };
   };
 }

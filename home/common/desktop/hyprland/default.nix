@@ -27,9 +27,9 @@ in {
     package = pkgs.hyprland;
     systemdIntegration = true;
 
-    #xwayland = {
-    #  enable = true;
-    #};
+    xwayland = {
+      enable = true;
+    };
 
     settings = {
       inherit (outputs) monitor workspace;
@@ -65,6 +65,14 @@ in {
       decoration = {
         rounding = 8;
         drop_shadow = true;
+        blur = true;
+        blur_passes = 3;
+        blur_size = 5;
+        blur_new_optimizations = true;
+        multisample_edges = true;
+        active_opacity = 0.96;
+        inactive_opacity = 0.85;
+        fullscreen_opacity = 1.0;
         shadow_ignore_window = true;
         shadow_offset = "0 5";
         shadow_range = 50;
@@ -82,6 +90,15 @@ in {
           "windowsOut, 1, 7, default, popin 80%"
           "workspaces, 1, 6, default, slide"
         ];
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        mouse_move_enables_dpms = true;
+        # disable dragging animation
+        animate_mouse_windowdragging = false;
+        no_direct_scanout = false; #for fullscreen games
       };
     };
 

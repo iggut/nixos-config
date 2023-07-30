@@ -4,33 +4,32 @@
   lib,
   pkgs,
   ...
-}:{
+}: {
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions;
-      [
-        bbenoist.nix
-        catppuccin.catppuccin-vsc
-        dbaeumer.vscode-eslint
-        eamodio.gitlens
-        esbenp.prettier-vscode
-        github.copilot
-        golang.go
-        kamadorueda.alejandra
-        mkhl.direnv
-        ms-python.vscode-pylance
-        ms-vscode.cpptools
-        naumovs.color-highlight
-        oderwat.indent-rainbow
-        pkief.material-product-icons
-        pkief.material-icon-theme
-        oderwat.indent-rainbow
-        sumneko.lua
-        usernamehw.errorlens
-        vadimcn.vscode-lldb
-        xaver.clang-format
-      ];
+    extensions = with pkgs.vscode-extensions; [
+      bbenoist.nix
+      catppuccin.catppuccin-vsc
+      dbaeumer.vscode-eslint
+      eamodio.gitlens
+      esbenp.prettier-vscode
+      github.copilot
+      golang.go
+      kamadorueda.alejandra
+      mkhl.direnv
+      ms-python.vscode-pylance
+      ms-vscode.cpptools
+      naumovs.color-highlight
+      oderwat.indent-rainbow
+      pkief.material-product-icons
+      pkief.material-icon-theme
+      oderwat.indent-rainbow
+      sumneko.lua
+      usernamehw.errorlens
+      vadimcn.vscode-lldb
+      xaver.clang-format
+    ];
 
     userSettings = {
       breadcrumbs.enabled = false;
@@ -57,7 +56,7 @@
         cursorWidth = 2;
         find.addExtraSpaceOnTop = false;
         fontFamily = "'Phosphor', 'monospace', monospace";
-        fontSize = 16;
+        fontSize = 14;
         formatOnSave = true;
         inlayHints.enabled = "off";
         inlineSuggest.enabled = true;
@@ -119,7 +118,7 @@
       };
 
       workbench = {
-        colorTheme = "Catppuccin Macchiato";
+        colorTheme = "Catppuccin Mocha";
         editor.tabCloseButton = "left";
         iconTheme = "material-icon-theme";
         list.smoothScrolling = true;

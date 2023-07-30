@@ -22,35 +22,32 @@ rec {
   };
 
   catppuccin-macchiato = {
-    rosewater = "#f4dbd6";
-    flamingo = "#f0c6c6";
-    pink = "#f5bde6";
-    mauve = "#c6a0f6";
-    red = "#ed8796";
-    maroon = "#ee99a0";
-    peach = "#f5a97f";
-    yellow = "#eed49f";
-    green = "#a6da95";
-    teal = "#8bd5ca";
-    sky = "#91d7e3";
-    sapphire = "#7dc4e4";
-    blue = "#8aadf4";
-    lavender = "#b7bdf8";
+    rosewater = "#f5e0dc";
+    flamingo = "#f2cdcd";
+    pink = "#f5c2e7";
+    mauve = "#cba6f7";
+    red = "#f38ba8";
+    maroon = "#eba0ac";
+    peach = "#fab387";
+    yellow = "#f9e2af";
+    green = "#a6e3a1";
+    teal = "#94e2d5";
+    sky = "#89dceb";
+    sapphire = "#74c7ec";
+    blue = "#87b0f9";
+    lavender = "#b4befe";
 
-    subtext0 = "#a5adcb";
-    subtext1 = "#b8c0e0";
-    text = "#cad3f5";
-
-    overlay0 = "#6e738d";
-    overlay1 = "#8087a2";
-    overlay2 = "#939ab7";
-
-    surface0 = "#363a4f";
-    surface1 = "#494d64";
-    surface2 = "#5b6078";
-
-    base = "#24273a";
-    crust = "#181926";
-    mantle = "#1e2030";
+    text = "#c6d0f5";
+    subtext1 = "#b3bcdf";
+    subtext0 = "#a1a8c9";
+    overlay2 = "#8e95b3";
+    overlay1 = "#7b819d";
+    overlay0 = "#696d86";
+    surface2 = "#565970";
+    surface1 = "#43465a";
+    surface0 = "#313244";
+    base = "#1e1e2e";
+    mantle = "#181825";
+    crust = "#11111b";
   };
 }

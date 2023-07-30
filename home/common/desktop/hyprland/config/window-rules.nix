@@ -29,16 +29,19 @@ _: {
     "pin, class:^(code)$"
 
     # assign windows to workspaces
-    "workspace 1 silent, class:[Ff]irefox"
+    "workspace 1 silent, class:startup-alacritty"
+    "workspace 2 silent, class:[Ff]irefox"
     "workspace 2 silent, class:[Oo]bsidian"
     "workspace 3 silent, class:WebCord"
     "workspace 4 silent, class:steam"
     "workspace 5 silent, class:code-url-handler"
-    "workspace 6 silent, class:startup-alacritty"
+
     "workspace 7 silent, class:task-managers"
 
-    # throw sharing indicators away
-    "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-    "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
+    # Remove transparancy from video
+    "opaque, title:^(Netflix)(.*)$"
+    "opaque, title:^(.*YouTube.*)$"
+    "opaque, title:^(Picture-in-Picture)$"
+    "opaque, class:^(looking-glass-client)$"
   ];
 }
