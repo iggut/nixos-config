@@ -23,6 +23,16 @@ in {
     mpv.enable = true;
     feh.enable = true;
 
+    looking-glass-client = {
+      enable = true;
+      settings = {
+        app.allowDMA = true;
+        app.shmFile = "/dev/kvmfr0";
+        win.showFPS = true;
+        spice.enable = true;
+      };
+    };
+
     firefox = {
       enable = true;
       profiles.privacy = {

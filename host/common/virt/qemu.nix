@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  hostname,
   ...
 }: {
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -104,16 +105,4 @@
   };
 
   fonts.fonts = [pkgs.dejavu_fonts]; # Need for looking-glass
-
-  home-manager.users.iggut = {
-    programs.looking-glass-client = {
-      enable = true;
-      settings = {
-        app.allowDMA = true;
-        app.shmFile = "/dev/kvmfr0";
-        win.showFPS = true;
-        spice.enable = true;
-      };
-    };
-  };
 }
