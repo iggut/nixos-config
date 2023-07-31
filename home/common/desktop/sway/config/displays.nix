@@ -47,7 +47,7 @@ _: {
     };
   };
 
-  freyja = {
+  gs66 = {
     workspace-assignments = [];
     kanshi-profiles = rec {
       default = {

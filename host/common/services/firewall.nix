@@ -6,7 +6,7 @@
   # Firewall configuration variable for syncthing
   syncthing = {
     hosts = [
-      "freyja"
+      "gs66"
       "gaminix"
       "thor"
     ];

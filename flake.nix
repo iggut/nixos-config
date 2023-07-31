@@ -51,8 +51,8 @@
     # nix build .#homeConfigurations."iggut@gaminix".activationPackage
     homeConfigurations = {
       # Desktop machines
-      "${username}@freyja" = libx.mkHome {
-        hostname = "freyja";
+      "${username}@gs66" = libx.mkHome {
+        hostname = "gs66";
         desktop = "hyprland";
       };
       "${username}@gaminix" = libx.mkHome {
@@ -71,8 +71,8 @@
     # nix build .#nixosConfigurations.gaminix.config.system.build.toplevel
     nixosConfigurations = {
       # Desktop machines
-      freyja = libx.mkHost {
-        hostname = "freyja";
+      gs66 = libx.mkHost {
+        hostname = "gs66";
         desktop = "hyprland";
       };
       gaminix = libx.mkHost {

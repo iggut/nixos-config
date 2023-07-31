@@ -7,7 +7,7 @@ The machines configured thus far are:
 | Hostname  |          Model          |   OS   |  Role   | Desktop  |
 | :-------: | :---------------------: | :----: | :-----: | :------: |
 |   `dev`   |     [Multipass] VM      | Ubuntu | Server  |    -     |
-| `freyja`  |   Lenovo Thinkpad Z13   | NixOS  | Laptop  | Hyprland |
+|  `gs66`   |   Lenovo Thinkpad Z13   | NixOS  | Laptop  | Hyprland |
 |  `hugin`  | Lenovo Thinkcentre M93p | NixOS  | Server  |    -     |
 | `gaminix` |   Ryzen 7950X Custom    | NixOS  | Desktop | Hyprland |
 |  `thor`   |     Intel NUC6i7KYK     | NixOS  | Server  |    -     |

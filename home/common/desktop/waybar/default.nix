@@ -9,7 +9,7 @@
 }: let
   # If this is a laptop, then include network/battery controls
   modules =
-    if hostname == "freyja"
+    if hostname == "gs66"
     then [
       "tray"
       "network"

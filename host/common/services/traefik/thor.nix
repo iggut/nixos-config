@@ -68,7 +68,7 @@ in {
             files = mkExtRouter {subdomain = "files";};
             dash = mkExtRouter {subdomain = "dash";};
 
-            freyja-syncthing = mkExtRouter {subdomain = "freyja.sync";};
+            gs66-syncthing = mkExtRouter {subdomain = "gs66.sync";};
             gaminix-syncthing = mkExtRouter {subdomain = "gaminix.sync";};
             thor-syncthing = mkExtRouter {subdomain = "thor.sync";};
 
@@ -87,7 +87,7 @@ in {
             files = mkLB "http://localhost:8081";
             dash = mkLB "http://localhost:8082";
 
-            "freyja.sync" = mkLB "http://freyja.${internalDomain}:8384";
+            "gs66.sync" = mkLB "http://gs66.${internalDomain}:8384";
             "gaminix.sync" = mkLB "http://gaminix.${internalDomain}:8384";
             "thor.sync" = mkLB "http://thor.${internalDomain}:8384";
 
