@@ -104,5 +104,5 @@
     waydroid.enable = true;
   };
 
-  fonts.fonts = [pkgs.dejavu_fonts]; # Need for looking-glass
+  fonts.packages = [pkgs.dejavu_fonts]; # Need for looking-glass
 }

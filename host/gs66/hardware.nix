@@ -55,6 +55,24 @@
     };
   };
 
+  services = {
+    # use Ambient Light Sensors for auto brightness adjustment
+    clight = {
+      enable = true;
+    };
+    clight.settings = {
+      verbose = true;
+      dpms.timeouts = [900 300];
+      dimmer.timeouts = [870 270];
+      screen.disabled = true;
+      sensor = let
+        regression = [0.000 0.104 0.299 0.472 0.621 0.749 0.853 0.935 0.995 1.000 1.000];
+      in {
+        ac_regression_points = regression;
+        bat_regression_points = regression;
+      };
+    };
+  };
   swapDevices = [
     {
       device = "/.swap/swapfile";
