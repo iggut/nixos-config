@@ -65,29 +65,14 @@ Luks encrypted full drive
 - [pkgs]: my custom package definitions
 - [scripts]: helper scripts for machine setup
 
-<!-- Applications / Packages -->
-
-[alacritty]: ./home/common/desktop/alacritty.nix
-[gtk]: ./home/common/desktop/gtk.nix
-[hyprland]: ./home/common/desktop/hyprland/default.nix
-[mako]: ./home/common/desktop/sway/services.nix
-[neofetch]: ./home/common/shell/neofetch.nix
-[nvim]: ./home/common/shell/vim.nix
-[starship]: ./home/common/shell/starship.nix
-[sway]: ./home/common/desktop/sway/default.nix
-[swaylock]: ./home/common/desktop/sway/swaylock.nix
-[tmux]: ./home/common/shell/tmux.nix
-[vscode]: ./home/common/desktop/vscode.nix
-[zathura]: ./home/common/desktop/zathura.nix
-[waybar]: ./home/common/desktop/sway/waybar/default.nix
-[zsh]: ./home/common/shell/zsh.nix
-
 ## 💻 Desktop preview
 
 ![firefox](.github/screenshots/firefox.png)
 ![steam](.github/screenshots/steam.png)
 ![code](.github/screenshots/code.png)
 ![webcord](.github/screenshots/webcord.png)
+![power](.github/screenshots/dock.png)
+![power](.github/screenshots/launcher.png)
 ![power](.github/screenshots/hypr_power.png)
 
 # 💾 Resources
