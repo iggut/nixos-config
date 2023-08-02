@@ -147,6 +147,9 @@ in {
       theme.fonts.monospace.package
     ];
 
+    # Use fonts specified by user rather than default ones
+    enableDefaultPackages = false;
+
     fontconfig = {
       enable = true;
       defaultFonts = {

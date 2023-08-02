@@ -15,7 +15,7 @@ if [[ -z "$TARGET_HOST" ]]; then
     exit 1
 fi
 
-if [ ! -e "./host/gaminix/disks.nix" ]; then
+if [ ! -e "./host/${TARGET_HOST}/disks.nix" ]; then
   echo "ERROR! $(basename "${0}") could not find the required file disko-config.nix"
   exit 1
 fi
@@ -38,9 +38,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
     sudo nixos-install --flake ".#${TARGET_HOST}"
 
-    # Rsync my nix-config to the target install
-    mkdir -p "/mnt/home/iggut/nixos-config"
-    rsync -a --delete "${DIR}/.." "/mnt/home/iggut/nixos-config"
 
 fi
 
