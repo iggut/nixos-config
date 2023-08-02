@@ -88,7 +88,6 @@ Luks encrypted full drive
 ![steam](.github/screenshots/steam.png)
 ![code](.github/screenshots/code.png)
 ![webcord](.github/screenshots/webcord.png)
-![clean](.github/screenshots/hypr_clean.png)
 ![power](.github/screenshots/hypr_power.png)
 ![dirty](.github/screenshots/hypr_dirty.png)
 
