@@ -54,8 +54,10 @@
     ------------------------------- Fonts ----------------------------------------
 
     -- customize fonts:
-    -- style.font = renderer.font.load(DATADIR .. "/fonts/FiraSans-Regular.ttf", 14 * SCALE)
+
+    style.font = renderer.font.load(DATADIR .. "/fonts/JetBrainsMono-Regular.ttf", 14)
     style.code_font = renderer.font.load(DATADIR .. "/fonts/JetBrainsMono-Regular.ttf", 14)
+
     --
     -- DATADIR is the location of the installed Lite XL Lua code, default color
     -- schemes and fonts.
@@ -305,7 +307,7 @@
               }
             }, config.plugins.nerdicons)
 
-            local icon_font = renderer.font.load(USERDIR .. "/fonts/SymbolsNerdFont-Regular.ttf", 18.5 * SCALE)
+            local icon_font = renderer.font.load(USERDIR .. "/fonts/SymbolsNerdFont-Regular.ttf", 18)
             local chevron_width = icon_font:get_width("")
             local previous_scale = SCALE
 
