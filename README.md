@@ -69,7 +69,7 @@ Luks encrypted full drive
 
 ![firefox](.github/screenshots/firefox.png)
 ![steam](.github/screenshots/steam.png)
-![code](.github/screenshots/edit.png)
+![code](.github/screenshots/editors.png)
 ![webcord](.github/screenshots/webcord.png)
 ![power](.github/screenshots/dock.png)
 ![power](.github/screenshots/launcher.png)
