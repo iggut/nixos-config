@@ -4,10 +4,12 @@
     grim
 
     glib
-    gsettings-qt
+    #gsettings-qt
     gsettings-desktop-schemas
     gnome.dconf-editor
     gnome.nixos-gsettings-overrides
+    lxappearance-gtk2
+    nerdfonts
 
     grimblast
     libva-utils
