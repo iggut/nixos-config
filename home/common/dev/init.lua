@@ -267,7 +267,7 @@
 
             -- Config
             config.plugins.nerdicons = common.merge({
-              use_default_dir_icons = false,
+              use_default_dir_icons = true,
               use_default_chevrons = false,
               draw_treeview_icons = true,
               draw_tab_icons = true,
@@ -279,7 +279,7 @@
                   description = "When enabled does not use nerdicon directory icons.",
                   path = "use_default_dir_icons",
                   type = "toggle",
-                  default = false
+                  default = true
                 },
                 {
                   label = "Use Default Chevrons",
@@ -305,7 +305,7 @@
               }
             }, config.plugins.nerdicons)
 
-            local icon_font = renderer.font.load(USERDIR .. "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/SymbolsNerdFont-Regular.ttf", 18.5 * SCALE)
+            local icon_font = renderer.font.load(USERDIR .. "/fonts/SymbolsNerdFont-Regular.ttf", 18.5 * SCALE)
             local chevron_width = icon_font:get_width("")
             local previous_scale = SCALE
 
