@@ -36,6 +36,8 @@
     ];
   };
 
+  chaotic.appmenu-gtk3-module.enable = true;
+
   services = {
     dbus = {
       enable = true;

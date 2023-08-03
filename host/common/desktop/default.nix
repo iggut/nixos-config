@@ -140,6 +140,7 @@ in {
     packages = with pkgs; [
       liberation_ttf
       ubuntu_font_family
+      nerdfonts
 
       theme.fonts.default.package
       theme.fonts.emoji.package

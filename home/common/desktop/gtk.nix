@@ -1,6 +1,8 @@
-{ theme
-, config
-, ...
+{
+  theme,
+  config,
+  pkgs,
+  ...
 }: {
   home.pointerCursor = {
     inherit (theme.cursorTheme) package size name;
@@ -24,7 +26,6 @@
     };
 
     gtk3.extraConfig = {
-      gtk-button-images = 1;
       gtk-application-prefer-dark-theme = true;
     };
 
@@ -37,5 +38,12 @@
     };
 
     theme = theme.gtkTheme;
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {color-scheme = "prefer-dark";};
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Catppuccin-Mocha-Compact-Mauve-dark";
+    };
   };
 }

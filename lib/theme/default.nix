@@ -27,11 +27,11 @@ in {
   wallpaper = ./wallpapers/space-clouds.png;
 
   gtkTheme = {
-    name = "Catppuccin-Mocha-Standard-Lavender-dark";
+    name = "Catppuccin-Mocha-Compact-Mauve-dark";
     package = pkgs.catppuccin-gtk.override {
-      size = "standard";
+      accents = ["mauve"];
+      size = "compact";
       variant = "mocha";
-      accents = ["lavender"];
     };
   };
 
@@ -50,16 +50,16 @@ in {
   };
 
   cursorTheme = {
-    name = "Adwaita";
-    package = pkgs.gnome.adwaita-icon-theme;
+    name = "Catppuccin-Frappe-Dark";
+    package = pkgs.catppuccin-cursors;
     size = 24;
   };
 
   fonts = {
     default = {
-      name = "SF Pro Display";
+      name = "JetBrainsMono Nerd Font";
       package = pkgs.sf-pro-fonts;
-      size = "11";
+      size = "10";
     };
     iconFont = {
       name = "Liga SFMono Nerd Font";

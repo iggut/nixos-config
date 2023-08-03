@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   basePackages = with pkgs; [
     _1password
     bat
@@ -27,5 +27,6 @@
     wget
     yq-go
     kitty
+    catppuccin-cursors
   ];
 }

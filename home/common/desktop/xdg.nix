@@ -1,8 +1,6 @@
-{ theme, ... }:
-let
+{theme, ...}: let
   inherit ((import ./file-associations.nix)) associations;
-in
-{
+in {
   xdg = {
     enable = true;
     mimeApps = {
@@ -17,7 +15,21 @@ in
         terminal = false;
         icon = "rambox";
         type = "Application";
-        categories = [ "Network" "Application" ];
+        categories = ["Network" "Application"];
+      };
+
+      bottles = {
+        name = "Bottles";
+        exec = "env GTK_THEME=${theme.gtkTheme.name} bottles";
+        terminal = false;
+        type = "Application";
+        icon = "com.usebottles.bottles";
+        categories = ["Utility" "GNOME" "GTK"];
+        startupNotify = true;
+        mimeType = ["x-scheme-handler/bottles" "application/x-ms-dos-executable" "application/x-msi" "application/x-ms-shortcut" "application/x-wine-extension-msp"];
+        settings = {
+          X-GNOME-UsesNotifications = "true";
+        };
       };
 
       signal-desktop = {
@@ -26,7 +38,7 @@ in
         terminal = false;
         icon = "signal-desktop";
         type = "Application";
-        categories = [ "Network" "Application" ];
+        categories = ["Network" "Application"];
       };
 
       # Override the desktop file for Nautilus to use GTK_THEME.
@@ -37,7 +49,7 @@ in
         terminal = false;
         icon = "org.gnome.Nautilus";
         type = "Application";
-        categories = [ "GNOME" "Utility" "Core" "FileManager" ];
+        categories = ["GNOME" "Utility" "Core" "FileManager"];
         startupNotify = true;
         settings = {
           DBusActivatable = "true";
@@ -72,5 +84,3 @@ in
     };
   };
 }
-
-
