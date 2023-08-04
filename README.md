@@ -72,7 +72,7 @@ Luks encrypted full drive
 ![code](.github/screenshots/editors.png)
 ![webcord](.github/screenshots/webcord.png)
 ![power](.github/screenshots/dock.png)
-![power](.github/screenshots/launcher.png)
+![power](.github/screenshots/nwg-launcher.png)
 ![power](.github/screenshots/hypr_power.png)
 
 # 💾 Resources
