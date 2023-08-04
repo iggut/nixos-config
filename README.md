@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
+
 <h1 align="center">IgguT/nixos-config</h1>
 
 This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for configuring my machines.
@@ -105,4 +107,10 @@ Behold, the amazing folks who have influenced and inspired me:
 - The mysterious Misterio77
 - The magnificent dr460nf1r3
 
+### ❤️ Gratitude
+
 To all of you, I extend my heartfelt thanks. Your brilliance has ignited my own creativity, and I am forever grateful for the influence you have had on my configurations.
+
+&nbsp;
+
+<p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>

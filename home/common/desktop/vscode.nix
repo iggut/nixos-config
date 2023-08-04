@@ -56,7 +56,7 @@
         cursorWidth = 2;
         find.addExtraSpaceOnTop = false;
         fontFamily = "'Phosphor', 'monospace', monospace";
-        fontSize = 14;
+        fontSize = 13;
         formatOnSave = true;
         inlayHints.enabled = "off";
         inlineSuggest.enabled = true;
@@ -85,6 +85,7 @@
       };
 
       explorer = {
+        fontSize = 12;
         confirmDragAndDrop = false;
         confirmDelete = true;
       };
@@ -106,7 +107,7 @@
         cursorStyle = "line";
         cursorWidth = 2;
         fontFamily = "'monospace'";
-        fontSize = 14;
+        fontSize = 13;
         smoothScrolling = true;
       };
 

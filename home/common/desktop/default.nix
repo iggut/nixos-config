@@ -181,8 +181,8 @@ in {
     };
 
     # Add catppuccin mocha steam skin
-    ".local/share/Steam/steamui/libraryroot.custom.css" = {
-      source = "${(pkgs.callPackage ./self-built/adwaita-for-steam {})}/build/libraryroot.custom.css";
+    ".local/share/Steam/steamui" = {
+      source = "${(pkgs.callPackage ./self-built/adwaita-for-steam {})}/build";
       recursive = true;
     };
 

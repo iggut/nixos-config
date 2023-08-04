@@ -6,13 +6,13 @@
 }:
 stdenvNoCC.mkDerivation rec {
   name = "adwaita-for-steam";
-  version = "1.7";
+  version = "1.10";
 
   src = fetchFromGitHub {
     owner = "tkashkin";
     repo = "Adwaita-for-Steam";
     rev = "v${version}";
-    sha256 = "bKmadSkdtQWAI+AryPjgOx2X4+bL/a4EEIS9elKEHV0=";
+    sha256 = "pFJnioylRhnC3lGGkBLMXvakzt/XvoCXPDqepXskPfI=";
   };
 
   preferLocalBuild = true;
@@ -23,6 +23,6 @@ stdenvNoCC.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/build
-    NIX_OUT="$out" python install.py -c catppuccin-mocha -we library/hide_whats_new -we library/sidebar_hover -we login/hover_qr -we windowcontrols/hide-close
+    NIX_OUT="$out" python install.py -c catppuccin-mocha -e library/hide_whats_new -e library/sidebar_hover -e login/hover_qr -e windowcontrols/hide-close
   '';
 }

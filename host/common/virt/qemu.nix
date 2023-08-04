@@ -32,7 +32,7 @@
       "iommu=pt"
       #"video=efifb:off"
       #"video=vesafb:off"
-      #"vfio-pci.ids=10de:2482,10de:228b" # GPU id to bind to vfio for pass. to vm
+      "vfio-pci.ids=10de:2482,10de:228b" # GPU id to bind to vfio for pass. to vm
       "kvm.ignore_msrs=1"
       "kvm.report_ignored_msrs=0"
     ];
