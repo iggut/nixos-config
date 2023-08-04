@@ -22,7 +22,8 @@
 
     systemPackages = with pkgs; [
       polkit_gnome
-      gnome.nautilus
+      gnome.nautilus # File manager
+      gnome.gnome-disk-utility # Disks manager
       gnome.zenity
       gnome.dconf-editor
       gnome.nixos-gsettings-overrides
@@ -74,6 +75,7 @@
   };
 
   programs = {
+    partition-manager.enable = true;
     hyprland = {
       enable = true;
       package = pkgs.hyprland;
