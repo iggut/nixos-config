@@ -27,12 +27,8 @@ in {
   wallpaper = ./wallpapers/space-clouds.png;
 
   gtkTheme = {
-    name = "Catppuccin-Mocha-Compact-Mauve-dark";
-    package = pkgs.catppuccin-gtk.override {
-      accents = ["mauve"];
-      size = "compact";
-      variant = "mocha";
-    };
+    name = "Tokyonight-Dark-BL";
+    package = import ./tok.nix;
   };
 
   qtTheme = {
@@ -44,9 +40,8 @@ in {
   };
 
   iconTheme = rec {
-    name = "Papirus-Dark";
-    package = pkgs.papirus-icon-theme;
-    iconPath = "${package}/share/icons/${name}";
+    name = "Tokyonight-Dark-Cyan";
+    package = import ./tok.nix;
   };
 
   cursorTheme = {

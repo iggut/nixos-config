@@ -9,41 +9,45 @@
     gtk.enable = true;
     x11.enable = true;
   };
+  home.sessionVariables.GTK_THEME = "Tokyonight-Dark-BL";
 
   gtk = {
     enable = true;
 
-    font = {
-      inherit (theme.fonts.default) package;
-      name = "${theme.fonts.default.name}, ${theme.fonts.default.size}";
+    iconTheme = {
+      name = "Tokyonight-Dark-Cyan";
+      package = import ./tok.nix;
     };
 
-    gtk2 = {
-      configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-      extraConfig = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+    theme = {
+      name = "Tokyonight-Dark-BL";
+      package = import ./tok.nix;
+    };
+
+    cursorTheme = {
+      name = "Vanilla-DMZ";
+      package = pkgs.vanilla-dmz;
     };
 
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+        gtk-cursor-theme-name=Vanilla-DMZ
+      '';
     };
 
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+        gtk-cursor-theme-name=Vanilla-DMZ
+      '';
     };
-
-    iconTheme = {
-      inherit (theme.iconTheme) name package;
-    };
-
-    theme = theme.gtkTheme;
   };
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {color-scheme = "prefer-dark";};
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Mocha-Compact-Mauve-dark";
+      name = "Tokyonight-Dark-BL";
     };
   };
 }

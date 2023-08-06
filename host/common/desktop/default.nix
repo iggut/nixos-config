@@ -108,7 +108,7 @@ in {
   };
 
   environment.variables = {
-    GTK_THEME = "Catppuccin-Mocha-Standard-Blue-dark";
+    GTK_THEME = "Catppuccin-Mocha-Compact-Mauve-dark";
     GTK_ICON_THEME = "Papirus-Dark";
   };
 
