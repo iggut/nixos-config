@@ -18,7 +18,7 @@ in {
         categories = ["Network" "Application"];
       };
 
-      bottles = {
+      "com.usebottles.bottles" = {
         name = "Bottles";
         exec = "env GTK_THEME=${theme.gtkTheme.name} bottles";
         terminal = false;
