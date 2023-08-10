@@ -26,7 +26,7 @@ in {
     looking-glass-client = {
       enable = true;
       settings = {
-        app.allowDMA = true;
+        app.allowDMA = false;
         app.shmFile = "/dev/kvmfr0";
         win.showFPS = true;
         spice.enable = true;
@@ -215,7 +215,10 @@ in {
       recursive = true;
     };
     ".local/share/nwg-drawer" = {
-      source = ./config/nwg/nwg-drawer; #might need this: sudo ln -s ~/.local/share/nwg-drawer /usr/share
+      source = ./config/nwg/nwg-drawer;
+      #run need this after install:
+      # sudo mkdir /usr/share
+      # sudo ln -s ~/.local/share/nwg-drawer /usr/share/nwg-drawer
       recursive = true;
     };
 

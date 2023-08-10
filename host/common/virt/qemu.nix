@@ -16,31 +16,21 @@
 
   boot = {
     kernelModules = [
-      #"vfio_pci"
-      #"vfio_iommu_type1"
-      #"vfio"
-      "kvmfr"
-    ];
-    initrd.kernelModules = [
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
-
-      "nvidia"
-      "nvidia_modeset"
-      "nvidia_uvm"
-      "nvidia_drm"
+      "kvmfr"
     ];
+    #initrd.kernelModules = [
+    #  "vfio_pci"
+    #  "vfio"
+    #  "vfio_iommu_type1"
+    #];
     kernelParams = [
       "intel_iommu=on"
       "nowatchdog"
-      "nopti"
-      "mitigations=off"
-      "preempt=voluntary"
       "iommu.passthrough=1"
       "iommu=pt"
-      #"video=efifb:off"
-      #"video=vesafb:off"
       "vfio-pci.ids=10de:2482,10de:228b" # GPU id to bind to vfio for pass. to vm
       "kvm.ignore_msrs=1"
       "kvm.report_ignored_msrs=0"

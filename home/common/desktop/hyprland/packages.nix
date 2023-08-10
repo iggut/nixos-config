@@ -9,7 +9,7 @@
     gnome.dconf-editor
     gnome.nixos-gsettings-overrides
     lxappearance-gtk2
-    nerdfonts
+    #nerdfonts
 
     grimblast
     libva-utils

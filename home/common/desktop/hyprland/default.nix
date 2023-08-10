@@ -66,10 +66,10 @@ in {
       decoration = {
         rounding = 8;
         drop_shadow = true;
-        blur = true;
-        blur_passes = 3;
-        blur_size = 5;
-        blur_new_optimizations = true;
+        #blur = true;
+        #blur_passes = 3;
+        #blur_size = 5;
+        #blur_new_optimizations = true;
         multisample_edges = true;
         active_opacity = 0.96;
         inactive_opacity = 0.85;

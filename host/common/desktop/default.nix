@@ -37,11 +37,17 @@ in {
     ../virt
   ];
 
-  # Enable Plymouth and surpress some logs by default.
-  boot.plymouth.enable = true;
+  # Enable Plymouth + theme and surpress some logs by default.
+  boot.plymouth = {
+    enable = true;
+    themePackages = [(pkgs.catppuccin-plymouth.override {variant = "mocha";})];
+    theme = "catppuccin-mocha";
+  };
+
   boot.kernelParams = [
-    # The 'splash' arg is included by the plymouth option
+    # The 'splash' arg is included by the plymouth option - I'm too lazy to check  so I put it in anyway
     "quiet"
+    "splash"
     "loglevel=3"
     "rd.udev.log_priority=3"
     "vt.global_cursor_default=0"
@@ -106,6 +112,8 @@ in {
       #args = ["--prefer-vk-device 8086:9bc4"];
     };
   };
+
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk]; # Needed for steam file picker
 
   environment.variables = {
     GTK_THEME = "Catppuccin-Mocha-Compact-Mauve-dark";
