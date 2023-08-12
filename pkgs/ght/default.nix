@@ -1,8 +1,8 @@
-{ lib
-, pkgs
-, ...
-}:
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   pname = "ght";
 
   src = pkgs.fetchFromGitHub {
@@ -31,48 +31,47 @@ let
     pname = "ght-yarn-deps";
   };
 in
-pkgs.mkYarnPackage {
-  inherit src pname version yarnLock packageJSON;
+  pkgs.mkYarnPackage {
+    inherit src pname version yarnLock packageJSON;
 
-  nativeBuildInputs = with pkgs; [ makeWrapper ];
+    nativeBuildInputs = with pkgs; [makeWrapper];
 
-  patches = [ ./config-location.patch ];
+    patches = [./config-location.patch];
 
-  postPatch = ''
-    substituteInPlace ght \
-        --replace "./index.js" "$out/opt/ght/index.js" \
-        --replace "./package.json" "$out/opt/ght/package.json"
-  '';
+    postPatch = ''
+      substituteInPlace ght \
+          --replace "./index.js" "$out/opt/ght/index.js" \
+          --replace "./package.json" "$out/opt/ght/package.json"
+    '';
 
-  configurePhase = ''
-    ln -s $node_modules node_modules
-  '';
+    configurePhase = ''
+      ln -s $node_modules node_modules
+    '';
 
-  buildPhase = ''
-    export HOME=$(mktemp -d)
-    yarn --offline build
-  '';
+    buildPhase = ''
+      export HOME=$(mktemp -d)
+      yarn --offline build
+    '';
 
-  installPhase = ''
-    mkdir -p $out/bin $out/opt
-    
-    # Copy the built tool & node_modules into the output
-    cp -r dist $out/opt/ght
-    ln -sf ${yarnDeps}/node_modules $out/opt/ght/node_modules
-    
-    # Copy the 'binary' into place
-    cp ght $out/bin/ght
+    installPhase = ''
+      mkdir -p $out/bin $out/opt
 
-    # Make sure that chromium is available and puppeteer knows to use it
-    wrapProgram $out/bin/ght \
-        --set PUPPETEER_EXECUTABLE_PATH ${pkgs.chromium.outPath}/bin/chromium
-  '';
+      # Copy the built tool & node_modules into the output
+      cp -r dist $out/opt/ght
+      ln -sf ${yarnDeps}/node_modules $out/opt/ght/node_modules
 
-  distPhase = "true";
+      # Copy the 'binary' into place
+      cp ght $out/bin/ght
 
-  meta = with lib; {
-    description = "Perform actions in Greenhouse from you terminal.";
-    maintainers = [ jnsgruk ];
-  };
-}
+      # Make sure that chromium is available and puppeteer knows to use it
+      wrapProgram $out/bin/ght \
+          --set PUPPETEER_EXECUTABLE_PATH ${pkgs.chromium.outPath}/bin/chromium
+    '';
 
+    distPhase = "true";
+
+    meta = with lib; {
+      description = "Perform actions in Greenhouse from you terminal.";
+      maintainers = [jnsgruk];
+    };
+  }

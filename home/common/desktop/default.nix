@@ -43,6 +43,7 @@ in {
           enhancer-for-youtube
           gesturefy
           protondb-for-steam
+          stylus
           istilldontcareaboutcookies
           enhanced-github
           onepassword-password-manager
@@ -135,8 +136,8 @@ in {
     catppuccin-gtk
     cider
     desktop-file-utils
-    ght
-    google-chrome
+    #ght
+    #google-chrome
     imlib2Full
     libnotify
     obsidian

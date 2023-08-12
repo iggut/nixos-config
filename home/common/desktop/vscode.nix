@@ -6,6 +6,7 @@
   ...
 }: {
   programs.vscode = {
+    package = pkgs.vscodium;
     enable = true;
     mutableExtensionsDir = true;
     extensions = with pkgs.vscode-extensions; [

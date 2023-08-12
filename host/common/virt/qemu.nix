@@ -21,11 +21,12 @@
       "vfio_iommu_type1"
       "kvmfr"
     ];
-    #initrd.kernelModules = [
-    #  "vfio_pci"
-    #  "vfio"
-    #  "vfio_iommu_type1"
-    #];
+    initrd.kernelModules = [
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
+    ];
     kernelParams = [
       "intel_iommu=on"
       "nowatchdog"

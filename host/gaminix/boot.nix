@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -9,8 +13,14 @@
         "usbhid"
         "xhci_pci"
       ];
-      kernelModules = [];
+      kernelModules = ["nvidia"];
     };
+
+    kernelParams = [
+      "module_blacklist=i915"
+      "video=HDMI-A-1:2560x1440@59.951"
+      #"video=DP-1:1920x1080@165"
+    ];
 
     blacklistedKernelModules = ["nouveau"];
 
@@ -27,7 +37,8 @@
     ];
 
     # Use the latest Linux kernel, rather than the default LTS
-    #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
+    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
+    #kernelPackages = pkgs.linuxPackages;
   };
 }

@@ -21,6 +21,7 @@
     rsync
     traceroute
     tree
+    undervolt
     unzip
     usbutils
     vim

@@ -24,12 +24,16 @@ in {
   ];
 
   wayland.windowManager.hyprland = {
+    enableNvidiaPatches = true;
+
     enable = true;
     package = pkgs.hyprland;
     systemdIntegration = true;
 
     xwayland = {
       enable = true;
+
+      hidpi = false;
     };
 
     settings = {
@@ -120,6 +124,8 @@ in {
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
+
+    WLR_RENDERER = lib.mkForce "gles2";
   };
 
   systemd.user.services.swaybg = {

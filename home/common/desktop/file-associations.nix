@@ -1,8 +1,7 @@
 let
-  browser = [ "google-chrome.desktop" ];
-  archiveManager = [ "org.gnome.FileRoller.desktop" ];
-in
-{
+  browser = ["firefox.desktop"];
+  archiveManager = ["org.gnome.FileRoller.desktop"];
+in {
   # XDG MIME types
   associations = {
     "application/x-extension-htm" = browser;
@@ -19,13 +18,13 @@ in
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
 
-    "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "feh.desktop" ];
+    "audio/*" = ["mpv.desktop"];
+    "video/*" = ["mpv.dekstop"];
+    "image/*" = ["feh.desktop"];
 
     "application/json" = browser;
 
-    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
+    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
 
     # Archives / compressed files
     "application/x-7z-compressed" = archiveManager;

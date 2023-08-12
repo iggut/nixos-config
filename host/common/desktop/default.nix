@@ -55,8 +55,6 @@ in {
   # improvement for games using lots of mmaps (same as steam deck)
   boot.kernel.sysctl = {"vm.max_map_count" = 2147483642;};
 
-  hardware.opengl.enable = true;
-
   # Automatically tune nice levels
   services.ananicy = {
     enable = true;
