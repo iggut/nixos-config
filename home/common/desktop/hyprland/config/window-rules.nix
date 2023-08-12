@@ -34,7 +34,7 @@ _: {
     "workspace 2 silent, class:[Oo]bsidian"
     "workspace 3 silent, class:WebCord"
     "workspace 4 silent, class:steam"
-    "workspace 5 silent, class:code-url-handler"
+    "workspace 5 silent, class:codium-url-handler"
 
     "workspace 7 silent, class:task-managers"
 
