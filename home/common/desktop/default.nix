@@ -145,6 +145,7 @@ in {
     pavucontrol
     rambox
     signal-desktop
+    waydroid-script
     xdg-utils
     xorg.xlsclients
     ###
