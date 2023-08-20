@@ -10,6 +10,7 @@
     mangohud
     prismlauncher
     lunar-client
+    lutris
     minetest
     osu-lazer-bin
     protonup-qt

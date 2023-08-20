@@ -16,7 +16,9 @@
     htop
     jq
     killall
+    lzip
     pciutils
+    python3
     ripgrep
     rsync
     traceroute

@@ -8,6 +8,7 @@ _: {
       "5, monitor:HDMI-A-1"
       "6, monitor:DP-1"
       "7, monitor:DP-1"
+      "8, monitor:DP-1, default:true"
     ];
 
     monitor = [

@@ -17,6 +17,9 @@
     };
 
     kernelParams = [
+      "nvidia_drm.modeset=1"
+      "rd.driver.blacklist=nouveau"
+      "modprobe.blacklist=nouveau"
       "module_blacklist=i915"
       "video=HDMI-A-1:2560x1440@59.951"
       #"video=DP-1:1920x1080@165"

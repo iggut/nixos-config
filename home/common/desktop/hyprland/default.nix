@@ -32,8 +32,6 @@ in {
 
     xwayland = {
       enable = true;
-
-      hidpi = false;
     };
 
     settings = {

@@ -137,7 +137,7 @@ in {
     cider
     desktop-file-utils
     #ght
-    #google-chrome
+    google-chrome
     imlib2Full
     libnotify
     obsidian
