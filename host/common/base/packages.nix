@@ -31,5 +31,6 @@
     yq-go
     kitty
     catppuccin-cursors
+    #nur.repos.mic92.hello-nur
   ];
 }

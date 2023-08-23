@@ -25,6 +25,14 @@
 
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
+
+  environment.systemPackages = [config.nur.repos.ataraxiasjel.waydroid-script];
+
   hardware = {
     enableAllFirmware = true;
     nvidia = {

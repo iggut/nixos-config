@@ -1,6 +1,7 @@
 {
   pkgs,
   desktop,
+  inputs,
   ...
 }: let
   inherit (pkgs.nur.repos.rycee) firefox-addons;
@@ -145,7 +146,8 @@ in {
     pavucontrol
     rambox
     signal-desktop
-    waydroid-script
+    nur.repos.ataraxiasjel.waydroid-script
+    #waydroid-script
     xdg-utils
     xorg.xlsclients
     ###

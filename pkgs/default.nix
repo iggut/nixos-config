@@ -3,5 +3,6 @@
 {pkgs ? (import ../nixpkgs.nix) {}}: {
   #
   #ght = pkgs.callPackage ./ght { };
-  waydroid-script = pkgs.callPackage ./waydroid-script {};
+  #waydroid-script = pkgs.callPackage ./waydroid-script {};
+  helluu = "hi";
 }
