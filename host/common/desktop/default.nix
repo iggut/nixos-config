@@ -101,14 +101,14 @@ in {
       #gamescopeSession.enable = true;
       #gamescopeSession.args = ["--prefer-vk-device 8086:9bc4"];
     };
+  };
 
-    #Enable Gamescope
-    gamescope = {
-      enable = true;
-      package = pkgs.gamescope_git;
-      capSysNice = true;
-      #args = ["--prefer-vk-device 8086:9bc4"];
-    };
+  security.wrappers.gamescope = {
+    source = "${pkgs.gamescope_git}/bin/gamescope";
+    program = "gamescope";
+    capabilities = "cap_sys_nice+ep";
+    owner = "root";
+    group = "root";
   };
 
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk]; # Needed for steam file picker

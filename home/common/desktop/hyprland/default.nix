@@ -123,7 +123,7 @@ in {
     XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
 
-    WLR_RENDERER = lib.mkForce "gles2";
+    #WLR_RENDERER = lib.mkForce "gles2"; testig
   };
 
   systemd.user.services.swaybg = {

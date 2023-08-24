@@ -1,6 +1,4 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./bat.nix
     ./fzf.nix
@@ -23,5 +21,10 @@
     jq.enable = true;
   };
 
-  home.packages = with pkgs; [ ];
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+  };
+
+  home.packages = with pkgs; [];
 }

@@ -24,28 +24,28 @@
       INPUTRC = "$XDG_CONFIG_HOME/readline/inputrc";
       LESSHISTFILE = "$XDG_CACHE_HOME/lesshst";
       WGETRC = "$XDG_CONFIG_HOME/wgetrc";
-      #test#
-      WLR_DRM_NO_ATOMIC = "1";
+      #testig#
+      #WLR_DRM_NO_ATOMIC = "1";
       # Necessary to correctly enable va-api (video codec hardware
       # acceleration). If this isn't set, the libvdpau backend will be
       # picked, and that one doesn't work with most things, including
       # Firefox.
-      LIBVA_DRIVER_NAME = "nvidia";
+      #LIBVA_DRIVER_NAME = "nvidia";
       # Required to run the correct GBM backend for nvidia GPUs on wayland
-      GBM_BACKEND = "nvidia-drm";
+      #GBM_BACKEND = "nvidia-drm";
       # Required to use va-api it in Firefox. See
       # https://github.com/elFarto/nvidia-vaapi-driver/issues/96
-      MOZ_DISABLE_RDD_SANDBOX = "1";
+      #MOZ_DISABLE_RDD_SANDBOX = "1";
       # Required for firefox 98+, see:
       # https://github.com/elFarto/nvidia-vaapi-driver#firefox
-      EGL_PLATFORM = "wayland";
+      #EGL_PLATFORM = "wayland";
       # It appears that the normal rendering mode is broken on recent
       # nvidia drivers:
       # https://github.com/elFarto/nvidia-vaapi-driver/issues/213#issuecomment-1585584038
-      NVD_BACKEND = "direct";
+      #NVD_BACKEND = "direct";
       # Apparently, without this nouveau may attempt to be used instead
       # (despite it being blacklisted)
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
       #WLR_RENDERER = lib.mkForce "gles2";
       #/test#
       XDG_SESSION_TYPE = "wayland";

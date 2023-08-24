@@ -31,6 +31,7 @@ in {
   environment.systemPackages = basePackages;
 
   programs = {
+    adb.enable = true;
     nm-applet.enable = true; # Network manager tray icon
     kdeconnect.enable = true; # Connect phone to PC
     zsh.enable = true;
