@@ -98,7 +98,7 @@
       /*
       active workspace
       */
-      background = mkLiteral "#101320";
+      background = mkLiteral "#181825";
       /*
       background color
       */
