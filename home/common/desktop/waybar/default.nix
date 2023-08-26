@@ -12,16 +12,20 @@
     if hostname == "gs66"
     then [
       "tray"
+      "idle_inhibitor"
       "network"
       "battery"
       "pulseaudio"
       "pulseaudio#source"
+      "clock"
       "custom/power"
     ]
     else [
       "tray"
+      "idle_inhibitor"
       "pulseaudio"
       "pulseaudio#source"
+      "clock"
       "custom/power"
     ];
 
@@ -29,16 +33,27 @@
     format = "{icon}";
     format-icons = {
       "1" = "";
-      "2" = "";
-      "3" = "";
-      "4" = "";
+      "2" = "";
+      "3" = ./discord.svg;
+      "4" = "";
       "5" = "";
-      "6" = "";
+      "6" = "";
       "7" = "";
-      "8" = "";
-      "9" = "";
+      "8" = "";
+      "9" = "";
     };
     on-click = "activate";
+    on-scroll-up = "hyprctl dispatch workspace e-1";
+    on-scroll-down = "hyprctl dispatch workspace e+1";
+  };
+
+  windowModule = {
+    rewrite = {
+      "(.*) .*? Mozilla Firefox$" = " $1";
+      "(.*) .*? VSCodium$" = " $1";
+      "Alacritty$" = " Alacritty";
+    };
+    separate-outputs = true;
   };
 
   inherit ((import ../rofi/lib.nix {inherit lib;})) toRasi;
@@ -61,18 +76,24 @@ in {
         passthrough = false;
         gtk-layer-shell = true;
 
-        modules-left = [
-          (
-            if desktop == "sway"
-            then "sway/workspaces"
-            else "hyprland/workspaces"
-          )
-        ];
-        modules-center = ["clock" "idle_inhibitor"];
+        modules-left = ["hyprland/workspaces" "gamemode"];
+        modules-center = ["hyprland/window"];
         modules-right = modules;
 
-        "sway/workspaces" = workspaceConfig;
         "hyprland/workspaces" = workspaceConfig;
+        "hyprland/window" = windowModule;
+
+        gamemode = {
+          format = "{glyph} {count}";
+          glyph = "󰊴";
+          hide-not-running = true;
+          use-icon = true;
+          icon-name = "input-gaming-symbolic";
+          icon-spacing = 4;
+          icon-size = 20;
+          tooltip = true;
+          tooltip-format = "Games running: {count}";
+        };
 
         "network" = {
           format-wifi = "{essid} ";
@@ -111,7 +132,10 @@ in {
           spacing = 10;
         };
 
-        "clock" = {format = "{:%d %b %H:%M}";};
+        "clock" = {
+          format = "{:%A %H:%M} ";
+          tooltip-format = "<tt>{calendar}</tt>";
+        };
 
         "pulseaudio" = {
           format = "{volume}% {icon}";

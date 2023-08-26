@@ -15,6 +15,12 @@
     lxappearance-gtk2
     #nerdfonts
 
+    zeroad
+    cataclysm-dda-git
+    shattered-pixel-dungeon
+    trackballs
+    mari0
+
     grimblast
     libva-utils
     playerctl

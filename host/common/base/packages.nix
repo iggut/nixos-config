@@ -31,5 +31,6 @@
     yq-go
     kitty
     catppuccin-cursors
+    pantheon.sideload
   ];
 }

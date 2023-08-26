@@ -14,6 +14,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.jovian.nixosModules.jovian
 
     ../common/hardware/audioengine.nix
     ../common/hardware/bluetooth.nix
@@ -27,6 +28,8 @@
     fsType = "ntfs";
     options = ["uid=1000" "gid=1000" "nodev" "nofail" "x-gvfs-show" "rw" "user" "exec" "umask=000"];
   };
+
+  jovian.steam.enable = true;
 
   nixpkgs.hostPlatform = "x86_64-linux";
 

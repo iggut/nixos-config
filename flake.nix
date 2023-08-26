@@ -26,8 +26,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     nur.url = "github:nix-community/NUR";
+
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
+    jovian.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/iggut/crafts-flake";
     crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";

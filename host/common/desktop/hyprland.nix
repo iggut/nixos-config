@@ -77,6 +77,7 @@
       polkit_gnome
       gnome.nautilus # File manager
       gnome.gnome-disk-utility # Disks manager
+      gnome.gucharmap # GNOME Character Map
       gnome.zenity
       gnome.dconf-editor
       gnome.nixos-gsettings-overrides

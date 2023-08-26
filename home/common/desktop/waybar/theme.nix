@@ -1,105 +1,149 @@
-{ config, lib, theme, ... }: {
-  theme =
-    let
-      inherit (config.lib.formats.rasi) mkLiteral;
-    in
-    {
-      "*" = {
-        border = mkLiteral "none";
-        padding = 0;
-        font-family = "${theme.fonts.iconFont.name}";
-        font-size = 15;
-      };
-
-      "window#waybar" = {
-        background-color = mkLiteral "transparent";
-      };
-
-      "window>box" = {
-        margin = mkLiteral "8 8 0 8";
-        background = mkLiteral "${theme.colours.bg}";
-        opacity = mkLiteral "0.8";
-        border-radius = 8;
-      };
-
-      ".modules-right" = {
-        margin-right = 10;
-        padding = mkLiteral "5 10";
-      };
-
-      ".modules-center" = {
-        margin = 0;
-        padding = mkLiteral "5 10";
-      };
-
-      ".modules-left" = {
-        margin-left = 10;
-        padding = mkLiteral "5 0";
-      };
-
-      "#workspaces button" = {
-        padding = mkLiteral "0 10";
-        background-color = mkLiteral "transparent";
-        font-weight = mkLiteral "lighter";
-        color = mkLiteral "${theme.colours.text}";
-      };
-
-      "#workspaces button:hover" = {
-        color = mkLiteral "${theme.colours.accent}";
-        background-color = mkLiteral "transparent";
-      };
-
-      "#workspaces button.focused, #workspaces button.active" = {
-        color = mkLiteral "${theme.colours.accent}";
-        font-weight = mkLiteral "normal";
-        background-color = mkLiteral "transparent";
-      };
-
-      "#clock,
-      #battery,
-      #cpu,
-      #memory,
-      #temperature,
-      #network,
-      #pulseaudio,
-      #custom-media,
-      #tray,
-      #mode,
-      #custom-power,
-      #custom-menu,
-      #idle_inhibitor" = {
-        padding = mkLiteral "0 10";
-        color = mkLiteral "${theme.colours.text}";
-      };
-
-      "#mode" = {
-        font-weight = mkLiteral "bold";
-      };
-
-      "#custom-power" = {
-        color = mkLiteral "${theme.colours.accent}";
-        background-color = mkLiteral "transparent";
-      };
-
-      /*-----Indicators----*/
-      "#idle_inhibitor.activated" = {
-        color = mkLiteral "${theme.colours.accent}";
-      };
-
-      "#battery.charging" = {
-        color = mkLiteral "${theme.colours.green}";
-      };
-
-      "#battery.warning:not(.charging)" = {
-        color = mkLiteral "${theme.colours.orange}";
-      };
-
-      "#battery.critical:not(.charging)" = {
-        color = mkLiteral "${theme.colours.red}";
-      };
-
-      "#temperature.critical" = {
-        color = mkLiteral "${theme.colours.red}";
-      };
+{
+  config,
+  lib,
+  theme,
+  ...
+}: {
+  theme = let
+    inherit (config.lib.formats.rasi) mkLiteral;
+  in {
+    "*" = {
+      color = mkLiteral "#c0caf5";
+      #border = mkLiteral "none";
+      #padding = 0;
+      font-family = "${theme.fonts.iconFont.name}";
+      font-size = 14;
     };
+
+    "window#waybar" = {
+      background-color = mkLiteral "transparent";
+    };
+
+    "tooltip" = {
+      background = mkLiteral "#101320";
+      /*
+      tooltip background
+      */
+      border = mkLiteral "2 solid #c0caf5";
+      /*
+      tooltip border size and color
+      */
+      border-radius = mkLiteral "5";
+      /*
+      tooltip rounded corners
+      */
+    };
+
+    "#clock,
+     #battery,
+     #window,
+     #workspaces,
+     #gamemode,
+     #pulseaudio,
+     #tray,
+     #custom-power,
+     #idle_inhibitor" = {
+      text-shadow = mkLiteral "1 1 2 black";
+      /*
+      text shadow, offset-x | offset-y | blur-radius | color
+      */
+      background = mkLiteral "#101320";
+      /*
+      background color
+      */
+      margin = mkLiteral "10 4 4 4";
+      /*
+      empty spaces around
+      */
+      padding = mkLiteral "4 10";
+      /*
+      extend pill size, vertical then horizontal
+      */
+      box-shadow = mkLiteral "1 1 2 1 rgba(0, 0, 0, 0.4)";
+      /*
+      pill background shadows
+      */
+      border-radius = mkLiteral "5";
+      /*
+      rounded corners
+      */
+    };
+
+    "#custom-power" = {
+      margin-right = mkLiteral "10";
+    };
+
+    "#workspaces" = {
+      padding = mkLiteral "0";
+      margin-left = mkLiteral "10";
+    };
+
+    "#workspaces button" = {
+      padding = mkLiteral "0 4";
+      /*
+      fit with pill padding, 0 for not haveing duped vertical padding, 4 to make a square (4 value from module padding: ...#clock {padding >>4<< 10})
+      */
+      border = mkLiteral "2 solid transparent";
+      /*
+      required by active workspace top color, or the bar will jitter
+      */
+      transition-property = mkLiteral "background-color, border-top-color";
+      /*
+      smooth transition for workspace module
+      */
+      transition-duration = mkLiteral ".1s";
+    };
+
+    "#workspaces button.active" = {
+      /*
+      active workspace
+      */
+      background = mkLiteral "#101320";
+      /*
+      background color
+      */
+      border-top-color = mkLiteral "#7aa2f7";
+      /*
+      top color
+      */
+      color = mkLiteral "#a6adc8";
+      /*
+      icon(text) color
+      */
+    };
+
+    "#workspaces button:hover" = {
+      background = mkLiteral "#181825";
+      /*
+      hovered workspace color
+      */
+    };
+
+    "#mode" = {
+      font-weight = mkLiteral "bold";
+    };
+
+    /*
+    -----Indicators----
+    */
+    "#idle_inhibitor.activated" = {
+      color = mkLiteral "${theme.colours.accent}";
+    };
+
+    "#battery.charging" = {
+      color = mkLiteral "${theme.colours.green}";
+    };
+
+    "#battery.warning:not(.charging)" = {
+      color = mkLiteral "${theme.colours.orange}";
+    };
+
+    "#battery.critical:not(.charging)" = {
+      color = mkLiteral "${theme.colours.red}";
+    };
+
+    "#temperature.critical" = {
+      color = mkLiteral "${theme.colours.red}";
+    };
+  };
 }

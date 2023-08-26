@@ -103,13 +103,13 @@ in {
     };
   };
 
-  security.wrappers.gamescope = {
-    source = "${pkgs.gamescope_git}/bin/gamescope";
-    program = "gamescope";
-    capabilities = "cap_sys_nice+ep";
-    owner = "root";
-    group = "root";
-  };
+  #security.wrappers.gamescope = {
+  #  source = "${pkgs.gamescope_git}/bin/gamescope";
+  #  program = "gamescope";
+  #  capabilities = "cap_sys_nice+ep";
+  #  owner = "root";
+  #  group = "root";
+  #};
 
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk]; # Needed for steam file picker
 
