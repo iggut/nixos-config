@@ -34,9 +34,9 @@
     format-icons = {
       "1" = "";
       "2" = "";
-      "3" = ./discord.svg;
+      "3" = "󰙯";
       "4" = "";
-      "5" = "";
+      "5" = "󰘐";
       "6" = "";
       "7" = "";
       "8" = "";
@@ -50,8 +50,10 @@
   windowModule = {
     rewrite = {
       "(.*) .*? Mozilla Firefox$" = " $1";
-      "(.*) .*? VSCodium$" = " $1";
+      "(.*) .*? VSCodium$" = "󰘐 $1";
       "Alacritty$" = " Alacritty";
+      "Friends List$" = " Friends";
+      "Steam$" = " Steam";
     };
     separate-outputs = true;
   };
