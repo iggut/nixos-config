@@ -7,6 +7,8 @@
     catppuccin-kvantum
     grim
 
+    mpd
+
     glib
     #gsettings-qt
     gsettings-desktop-schemas

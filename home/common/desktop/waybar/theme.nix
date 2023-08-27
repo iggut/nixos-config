@@ -41,7 +41,19 @@
      #gamemode,
      #pulseaudio,
      #tray,
+     #mpris,
      #custom-power,
+     #custom-weather,
+     #custom-weather.severe,
+     #custom-weather.sunnyDay,
+     #custom-weather.clearNight,
+     #custom-weather.cloudyFoggyDay,
+     #custom-weather.cloudyFoggyNight,
+     #custom-weather.rainyDay,
+     #custom-weather.rainyNight,
+     #custom-weather.showyIcyDay,
+     #custom-weather.snowyIcyNight,
+     #custom-weather.default,
      #idle_inhibitor" = {
       text-shadow = mkLiteral "1 1 2 black";
       /*
@@ -67,6 +79,47 @@
       /*
       rounded corners
       */
+    };
+
+    "#mpris" = {
+      color = mkLiteral "#abb2bf";
+    };
+
+    "#custom-weather" = {
+      font-family = "${theme.fonts.iconFont.name}";
+      font-size = mkLiteral "14";
+      color = mkLiteral "#8a909e";
+    };
+
+    "#custom-weather.severe" = {
+      color = mkLiteral "#eb937d";
+    };
+
+    "#custom-weather.sunnyDay" = {
+      color = mkLiteral "#c2ca76";
+    };
+
+    "#custom-weather.clearNight" = {
+      color = mkLiteral "#cad3f5";
+    };
+
+    "#custom-weather.cloudyFoggyDay,
+     #custom-weather.cloudyFoggyNight" = {
+      color = mkLiteral "#c2ddda";
+    };
+
+    "#custom-weather.rainyDay,
+     #custom-weather.rainyNight" = {
+      color = mkLiteral "#5aaca5";
+    };
+
+    "#custom-weather.showyIcyDay,
+     #custom-weather.snowyIcyNight" = {
+      color = mkLiteral "#d6e7e5";
+    };
+
+    "#custom-weather.default" = {
+      color = mkLiteral "#dbd9d8";
     };
 
     "#custom-power" = {
@@ -95,6 +148,7 @@
     };
 
     "#workspaces button.active" = {
+      transition = mkLiteral "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
       /*
       active workspace
       */
@@ -106,17 +160,20 @@
       /*
       top color
       */
-      color = mkLiteral "#a6adc8";
+      color = mkLiteral "${theme.colours.blue}";
       /*
       icon(text) color
       */
     };
 
     "#workspaces button:hover" = {
-      background = mkLiteral "#181825";
+      background = mkLiteral "#1e1e2e";
       /*
       hovered workspace color
       */
+      color = mkLiteral "${theme.colours.blue}";
+      box-shadow = mkLiteral "inherit";
+      text-shadow = mkLiteral "inherit";
     };
 
     "#mode" = {

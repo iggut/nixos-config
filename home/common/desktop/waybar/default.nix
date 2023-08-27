@@ -7,6 +7,20 @@
   theme,
   ...
 }: let
+  waybar-wttr = pkgs.stdenv.mkDerivation {
+    name = "waybar-wttr";
+    buildInputs = [
+      (pkgs.python39.withPackages
+        (pythonPackages: with pythonPackages; [requests]))
+    ];
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./waybar-wttr.py} $out/bin/waybar-wttr
+      chmod +x $out/bin/waybar-wttr
+    '';
+  };
+
   # If this is a laptop, then include network/battery controls
   modules =
     if hostname == "gs66"
@@ -30,7 +44,7 @@
     ];
 
   workspaceConfig = {
-    format = "{icon}";
+    format = "{name}:{icon} ";
     format-icons = {
       "1" = "";
       "2" = "";
@@ -38,8 +52,8 @@
       "4" = "";
       "5" = "󰘐";
       "6" = "";
-      "7" = "";
-      "8" = "";
+      "7" = "";
+      "8" = "󰣙";
       "9" = "";
     };
     on-click = "activate";
@@ -78,7 +92,7 @@ in {
         passthrough = false;
         gtk-layer-shell = true;
 
-        modules-left = ["hyprland/workspaces" "gamemode"];
+        modules-left = ["hyprland/workspaces" "mpris" "custom/weather" "gamemode"];
         modules-center = ["hyprland/window"];
         modules-right = modules;
 
@@ -114,6 +128,29 @@ in {
           };
         };
 
+        "mpris" = {
+          max-length = 40;
+          format = "<span foreground='#a6e3a1'>{player_icon}</span> <span foreground='#bb9af7'>{title}</span>";
+          #format = "<span foreground='#bb9af7'></span> {title}";
+          format-paused = "{status_icon} <i>{title}</i>";
+          player-icons = {
+            default = "󰻏 ";
+            mpv = "🎵";
+          };
+          status-icons = {
+            paused = "󰾉 ";
+          };
+          tooltip-format = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+        };
+
+        "custom/weather" = {
+          format = "{}";
+          tooltip = true;
+          interval = 30;
+          exec = "${waybar-wttr}/bin/waybar-wttr";
+          return-type = "json";
+        };
+
         "battery" = {
           states = {
             good = 95;
@@ -136,6 +173,7 @@ in {
 
         "clock" = {
           format = "{:%A %H:%M} ";
+          on-click = "bash ~/.config/waybar/scripts/changewallpaper.sh";
           tooltip-format = "<tt>{calendar}</tt>";
         };
 
