@@ -21,6 +21,20 @@
     '';
   };
 
+  waybar-mediap = pkgs.stdenv.mkDerivation {
+    name = "waybar-mediap";
+    buildInputs = [
+      (pkgs.python39.withPackages
+        (pythonPackages: with pythonPackages; [requests]))
+    ];
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./waybar-mediap.py} $out/bin/waybar-mediap
+      chmod +x $out/bin/waybar-mediap
+    '';
+  };
+
   # If this is a laptop, then include network/battery controls
   modules =
     if hostname == "gs66"
@@ -92,7 +106,7 @@ in {
         passthrough = false;
         gtk-layer-shell = true;
 
-        modules-left = ["hyprland/workspaces" "mpris" "custom/weather" "gamemode"];
+        modules-left = ["hyprland/workspaces" "mpris" "custom/spotify" "custom/weather" "gamemode"];
         modules-center = ["hyprland/window"];
         modules-right = modules;
 
@@ -131,7 +145,6 @@ in {
         "mpris" = {
           max-length = 40;
           format = "<span foreground='#a6e3a1'>{player_icon}</span> <span foreground='#bb9af7'>{title}</span>";
-          #format = "<span foreground='#bb9af7'></span> {title}";
           format-paused = "{status_icon} <i>{title}</i>";
           player-icons = {
             default = "󰻏 ";
@@ -149,6 +162,15 @@ in {
           interval = 30;
           exec = "${waybar-wttr}/bin/waybar-wttr";
           return-type = "json";
+        };
+
+        "custom/spotify" = {
+          exec = "${waybar-mediap}/bin/waybar-mediap --player youtube-music";
+          format = " {}";
+          return-type = "json";
+          on-click = "playerctl play-pause";
+          on-double-click-right = "playerctl next";
+          on-scroll-down = "playerctl previous";
         };
 
         "battery" = {

@@ -43,6 +43,7 @@
      #tray,
      #mpris,
      #custom-power,
+     #custom-spotify,
      #custom-weather,
      #custom-weather.severe,
      #custom-weather.sunnyDay,
@@ -81,7 +82,7 @@
       */
     };
 
-    "#mpris" = {
+    "#mpris, #custom-spotify" = {
       color = mkLiteral "#abb2bf";
     };
 
