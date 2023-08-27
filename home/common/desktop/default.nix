@@ -184,6 +184,12 @@ in {
       recursive = true;
     };
 
+    # Add wallpaper change script for waybar - click on clock - $HOME/pictures/wallpapers < WP go in here
+    ".config/waybar/scripts/changewallpaper.sh" = {
+      source = ./scripts/changewallpaper.sh;
+      recursive = true;
+    };
+
     # Add catppuccin mocha steam skin
     ".local/share/Steam/steamui" = {
       source = "${(pkgs.callPackage ./self-built/adwaita-for-steam {})}/build";
