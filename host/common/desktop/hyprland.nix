@@ -108,8 +108,8 @@
     xserver = {
       enable = true; # Enable the X11 windowing system
       displayManager = {
-        autoLogin.enable = true;
-        autoLogin.user = "iggut";
+        #autoLogin.enable = true;
+        #autoLogin.user = "iggut";
         gdm = {
           enable = true;
         };
@@ -120,10 +120,10 @@
   };
 
   # Workaround for GDM autologin
-  systemd.services = {
-    "getty@tty1".enable = false;
-    "autovt@tty1".enable = false;
-  };
+  #systemd.services = {
+  #  "getty@tty1".enable = false;
+  #  "autovt@tty1".enable = false;
+  #};
 
   security = {
     pam = {

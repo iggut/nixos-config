@@ -48,8 +48,5 @@ _: {
     "size 350 950,class:^(steam)$ title:^(Friends)(.*)$"
     "float,class:^(steam)$ title:^(Friends)(.*)$"
     "center,class:^(steam)$ title:^(Friends)(.*)$"
-
-    "float,class:^(steam)$"
-    "center,class:^(steam)$"
   ];
 }

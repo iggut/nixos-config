@@ -8,6 +8,7 @@
     grim
 
     mpd
+    swaybg
 
     glib
     #gsettings-qt

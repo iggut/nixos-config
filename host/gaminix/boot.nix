@@ -44,4 +44,8 @@
     #kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
     #kernelPackages = pkgs.linuxPackages;
   };
+
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${./x2monitors.xml}"
+  ];
 }

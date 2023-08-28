@@ -195,7 +195,7 @@ in {
 
         "clock" = {
           format = "{:%A %H:%M} ";
-          on-click = "bash ~/.config/waybar/scripts/changewallpaper.sh";
+          on-click = "bash $HOME/.config/waybar/scripts/changewallpaper.sh";
           tooltip-format = "<tt>{calendar}</tt>";
         };
 

@@ -39,6 +39,13 @@ in {
   };
 
   services = {
+    printing.enable = true;
+    printing.drivers = [
+      #pkgs.cnijfilter2
+      #pkgs.cnijfilter_4_00
+      pkgs.gutenprint
+      pkgs.gutenprintBin
+    ];
     flatpak.enable = true;
     chrony.enable = true;
     journald.extraConfig = "SystemMaxUse=250M";
