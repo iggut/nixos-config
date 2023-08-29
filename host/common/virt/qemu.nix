@@ -56,8 +56,10 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-      onBoot = "ignore";
-      onShutdown = "shutdown";
+      #onBoot = "ignore";
+      #onShutdown = "shutdown";
+      onBoot = "start";
+      onShutdown = "suspend";
       extraConfig = ''
         user="iggut"
         unix_sock_group = "libvirtd"

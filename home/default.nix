@@ -1,18 +1,29 @@
-{ config, desktop, lib, outputs, stateVersion, username, inputs, pkgs, ... }:
 {
+  config,
+  desktop,
+  lib,
+  outputs,
+  stateVersion,
+  username,
+  inputs,
+  pkgs,
+  ...
+}: {
   # Only import desktop configuration if the host is desktop enabled
   # Only import user specific configuration if they have bespoke settings
-  imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-    
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
+  imports =
+    [
+      # If you want to use modules your own flake exports (from modules/home-manager):
+      # outputs.homeManagerModules.example
 
-    ./common/shell
-  ]
-  ++ lib.optional (builtins.isString desktop) ./common/desktop
-  ++ lib.optional (builtins.pathExists (./. + "/common/users/${username}")) ./common/users/${username};
+      # Or modules exported from other flakes (such as nix-colors):
+      # inputs.nix-colors.homeManagerModules.default
+      inputs.nix-index-database.hmModules.nix-index
+
+      ./common/shell
+    ]
+    ++ lib.optional (builtins.isString desktop) ./common/desktop
+    ++ lib.optional (builtins.pathExists (./. + "/common/users/${username}")) ./common/users/${username};
 
   home = {
     inherit username stateVersion;
@@ -23,19 +34,20 @@
   };
 
   nixpkgs = {
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
+    overlays =
+      [
+        # Add overlays your own flake exports (from overlays and pkgs dir):
+        outputs.overlays.additions
+        outputs.overlays.modifications
 
-      # You can also add overlays exported from other flakes:
-      inputs.crafts.overlay
-      inputs.nur.overlay
-    ]
-    ++ lib.optionals (desktop == "hyprland") [
-      inputs.hyprland.overlays.default
-      inputs.hyprland-contrib.overlays.default
-    ];
+        # You can also add overlays exported from other flakes:
+        inputs.crafts.overlay
+        inputs.nur.overlay
+      ]
+      ++ lib.optionals (desktop == "hyprland") [
+        inputs.hyprland.overlays.default
+        inputs.hyprland-contrib.overlays.default
+      ];
 
     config = {
       # Disable if you don't want unfree packages

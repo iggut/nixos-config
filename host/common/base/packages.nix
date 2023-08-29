@@ -32,5 +32,6 @@
     kitty
     catppuccin-cursors
     pantheon.sideload
+    comma
   ];
 }

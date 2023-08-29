@@ -18,6 +18,7 @@
       (./. + "/${hostname}/hardware.nix")
       inputs.chaotic.nixosModules.default
       inputs.nur.nixosModules.nur
+      inputs.nix-index-database.nixosModules.nix-index
 
       ./common/base
       ./common/users/${username}
@@ -55,6 +56,18 @@
       automatic = true;
       options = "--delete-older-than 14d";
     };
+
+    settings.allowed-users = [
+      "greg"
+      "@wheel"
+      "gdm"
+    ];
+
+    settings.trusted-users = [
+      "root"
+      "iggut"
+      "@wheel"
+    ];
 
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake

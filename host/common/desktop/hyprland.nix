@@ -112,6 +112,7 @@
         #autoLogin.user = "iggut";
         gdm = {
           enable = true;
+          #wayland = false;
         };
       };
     };

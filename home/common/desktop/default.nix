@@ -21,6 +21,8 @@ in {
   ];
 
   programs = {
+    nix-index.enable = true;
+
     mpv.enable = true;
     feh.enable = true;
 

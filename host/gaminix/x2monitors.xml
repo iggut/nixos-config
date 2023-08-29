@@ -6,7 +6,7 @@
             <scale>1</scale>
             <monitor>
                 <monitorspec>
-                    <connector>HDMI-2</connector>
+                    <connector>HDMI-1</connector>
                     <vendor>SAM</vendor>
                     <product>SAMSUNG</product>
                     <serial>0x01000e00</serial>
@@ -14,18 +14,18 @@
                 <mode>
                     <width>3840</width>
                     <height>2160</height>
-                    <rate>60</rate>
+                    <rate>59.94</rate>
                 </mode>
             </monitor>
         </logicalmonitor>
         <logicalmonitor>
             <x>0</x>
-            <y>154</y>
+            <y>0</y>
             <scale>1</scale>
             <primary>yes</primary>
             <monitor>
                 <monitorspec>
-                    <connector>DP-3</connector>
+                    <connector>DP-1</connector>
                     <vendor>ACR</vendor>
                     <product>XZ322Q</product>
                     <serial>1049010E43900</serial>
@@ -37,13 +37,5 @@
                 </mode>
             </monitor>
         </logicalmonitor>
-        <disabled>
-            <monitorspec>
-                <connector>HDMI-3</connector>
-                <vendor>SAM</vendor>
-                <product>SAMSUNG</product>
-                <serial>0x01000e00</serial>
-            </monitorspec>
-        </disabled>
     </configuration>
 </monitors>

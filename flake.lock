@@ -483,6 +483,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1693107069,
+        "narHash": "sha256-5dVXPchyvzmytanlwXHcmeQP9AfO/98Q6V+QtsMl5vQ=",
+        "owner": "Mic92",
+        "repo": "nix-index-database",
+        "rev": "53d40cf1bea235658ef8f6e8b8a1d033e2ecbfff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1692952286,
@@ -719,6 +739,7 @@
         "hyprland-contrib": "hyprland-contrib",
         "jovian": "jovian",
         "nix-formatter-pack": "nix-formatter-pack_3",
+        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",

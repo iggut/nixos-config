@@ -31,6 +31,9 @@
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     jovian.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/iggut/crafts-flake";
     crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
@@ -39,6 +42,7 @@
 
   outputs = {
     self,
+    nix-index-database,
     nixpkgs,
     nixpkgs-unstable,
     nix-formatter-pack,

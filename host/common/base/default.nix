@@ -31,6 +31,9 @@ in {
   environment.systemPackages = basePackages;
 
   programs = {
+    nix-index-database.comma.enable = true;
+    #nix-index.enableZshIntegration = true;
+    command-not-found.enable = false;
     adb.enable = true;
     nm-applet.enable = true; # Network manager tray icon
     kdeconnect.enable = true; # Connect phone to PC
@@ -41,8 +44,6 @@ in {
   services = {
     printing.enable = true;
     printing.drivers = [
-      #pkgs.cnijfilter2
-      #pkgs.cnijfilter_4_00
       pkgs.gutenprint
       pkgs.gutenprintBin
     ];
