@@ -77,6 +77,8 @@ in {
 
     dconf.enable = true;
 
+    seahorse.enable = true;
+
     # Archive manager
     file-roller.enable = true;
 
