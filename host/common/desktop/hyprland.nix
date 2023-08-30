@@ -73,22 +73,32 @@
       NIXOS_OZONE_WL = "1";
     };
 
-    systemPackages = with pkgs; [
-      polkit_gnome
-      gnome.nautilus # File manager
-      gnome.gnome-disk-utility # Disks manager
-      gnome.gucharmap # GNOME Character Map
-      gnome.zenity
-      gnome.dconf-editor
-      gnome.nixos-gsettings-overrides
-      ananicy-cpp-rules
-      input-leap_git
-      catppuccin-gtk
-      catppuccin-kvantum
-      glib
-      gsettings-qt
-      gsettings-desktop-schemas
-    ];
+    systemPackages =
+      (with pkgs.gnome; [
+        zenity
+        dconf-editor
+        gnome-keyring
+        nautilus # File manager
+        gnome-disk-utility # Disks manager
+        gucharmap # GNOME Character Map
+        zenity
+        dconf-editor
+        nixos-gsettings-overrides
+      ])
+      ++ (with pkgs; [
+        gtk3
+        dconf
+        gsound
+        gcr
+        polkit_gnome
+        ananicy-cpp-rules
+        input-leap_git
+        catppuccin-gtk
+        catppuccin-kvantum
+        glib
+        gsettings-qt
+        gsettings-desktop-schemas
+      ]);
   };
 
   chaotic.appmenu-gtk3-module.enable = true;
@@ -116,6 +126,14 @@
         };
       };
     };
+
+    accounts-daemon.enable = true;
+
+    gnome.glib-networking.enable = true;
+
+    gnome.gnome-settings-daemon.enable = true;
+
+    upower.enable = config.powerManagement.enable;
 
     gvfs.enable = true;
   };

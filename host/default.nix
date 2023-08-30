@@ -58,15 +58,18 @@
     };
 
     settings.allowed-users = [
-      "greg"
-      "@wheel"
       "gdm"
+      "root"
+      "iggut"
+      "@wheel"
+      "@users"
     ];
 
     settings.trusted-users = [
       "root"
       "iggut"
       "@wheel"
+      "@users"
     ];
 
     # This will add each flake input as a registry

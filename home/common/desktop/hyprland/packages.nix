@@ -9,6 +9,7 @@
 
     mpd
     swaybg
+    sfwbar
 
     glib
     #gsettings-qt

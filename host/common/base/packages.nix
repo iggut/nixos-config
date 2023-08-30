@@ -33,5 +33,6 @@
     catppuccin-cursors
     pantheon.sideload
     comma
+    nwg-panel
   ];
 }
