@@ -18,7 +18,7 @@ in {
     ./vscode.nix
     ./xdg.nix
     ./zathura.nix
-    ./blueman-applet.nix
+    #./blueman-applet.nix
     ./1password.nix
     ./kdeconnect.nix
   ];
