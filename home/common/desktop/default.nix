@@ -32,10 +32,16 @@ in {
     looking-glass-client = {
       enable = true;
       settings = {
+        input = {
+          grabKeyboardOnFocus = true;
+          rawMouse = true;
+          escapeKey = "KEY_INSERT";
+        };
         app.allowDMA = false;
         app.shmFile = "/dev/kvmfr0";
         win.showFPS = true;
         spice.enable = true;
+        spice.alwaysShowCursor = true;
       };
     };
 

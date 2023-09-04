@@ -35,6 +35,7 @@ _: {
     "workspace 3 silent, class:WebCord"
     "workspace 4 silent, class:steam"
     "workspace 5 silent, class:codium-url-handler"
+    "workspace 9 silent, class:looking-glass-client"
 
     "workspace 7 silent, class:task-managers"
 

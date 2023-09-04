@@ -101,7 +101,7 @@ in {
         mouse_move_enables_dpms = true;
         # disable dragging animation
         animate_mouse_windowdragging = false;
-        no_direct_scanout = false; #for fullscreen games
+        no_direct_scanout = true; #for fullscreen games
       };
     };
 

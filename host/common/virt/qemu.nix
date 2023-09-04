@@ -5,6 +5,15 @@
   hostname,
   ...
 }: {
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+  ];
+
   boot.extraModulePackages = with config.boot.kernelPackages; [
     kvmfr
   ];
@@ -46,10 +55,17 @@
     distrobox # Wrapper around docker to create and start linux containers - Tool for creating and managing Linux containers using Docker
     virt-manager # Gui for QEMU/KVM Virtualisation - Graphical user interface for managing QEMU/KVM virtual machines
     libguestfs
-    linuxKernel.packages.linux_6_4.kvmfr
+    linuxKernel.packages.linux_6_5.kvmfr
   ];
 
   services.udev.extraRules = ''
+    # Unprivileged nvme access
+    # cat /sys/block/nvme0n1/wwid
+    ATTR{wwid}=="eui.e8238fa6bf530001001b448b4ee597f9", SUBSYSTEM=="block", OWNER="iggut"
+    KERNEL=="sd*",  SUBSYSTEM=="block", OWNER="iggut"
+    SUBSYSTEM=="vfio", OWNER="iggut"
+
+    # take ownership of /dev/kvmfr0
     SUBSYSTEM=="kvmfr", OWNER="iggut", GROUP="libvirtd", MODE="0660"
   '';
 
@@ -69,7 +85,7 @@
       '';
       qemu = {
         package = pkgs.qemu_kvm;
-        #runAsRoot = true;
+        runAsRoot = true;
         swtpm.enable = true;
         ovmf.enable = true;
         verbatimConfig = ''
