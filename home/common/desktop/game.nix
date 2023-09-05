@@ -22,7 +22,8 @@
     yuzu-early-access # Nintendo Switch emulator
     rpcs3 # PS3 Emulator
     protontricks # Winetricks for proton prefixes
-    wine # Compatibility layer capable of running Windows applications
-    winetricks # Wine prefix settings manager
+    #wine # Compatibility layer capable of running Windows applications
+    #winetricks # Wine prefix settings manager
+    wineWowPackages.unstableFull
   ];
 }
