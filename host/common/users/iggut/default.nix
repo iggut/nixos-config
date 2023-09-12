@@ -22,10 +22,11 @@ in {
         "adbusers"
         "media"
         "input"
+        "dialout"
+        "plugdev"
       ]
       ++ ifExists [
         "docker"
-        "plugdev"
         "render"
         "lxd"
       ];

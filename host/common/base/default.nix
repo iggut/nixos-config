@@ -57,6 +57,12 @@ in {
     rtkit.enable = true;
   };
 
+  services.udev.extraRules = ''
+    # DFU (Internal bootloader for STM32 and AT32 MCUs)
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", MODE="0664", GROUP="plugdev"
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE="0664", GROUP="plugdev"
+  '';
+
   # Create dirs for home-manager
   systemd.tmpfiles.rules = [
     "d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root"
