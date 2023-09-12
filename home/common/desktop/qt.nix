@@ -1,11 +1,12 @@
 {
   pkgs,
   theme,
+  lib,
   ...
 }: {
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    #platformTheme = "qtct";
     style.name = "kvantum";
   };
 
@@ -15,7 +16,6 @@
       libsForQt5.qtstyleplugin-kvantum
       qt6Packages.qtstyleplugin-kvantum
       libsForQt5.qt5ct
-      qt6Packages.qt6ct
       lxqt.lxqt-panel
       lxqt.lxqt-themes
       lxqt.lxqt-config
@@ -27,7 +27,7 @@
     };
   };
 
-  #xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-  #  General.theme = "${theme.qtTheme.name}"; #"Catppuccin-Mocha-Mauve";
-  #};
+  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
+    General.theme = "${theme.qtTheme.name}"; #"Catppuccin-Mocha-Mauve";
+  };
 }
