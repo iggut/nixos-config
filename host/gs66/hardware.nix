@@ -14,6 +14,7 @@
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.jovian.nixosModules.jovian
 
     ../common/hardware/audioengine.nix
     ../common/hardware/bluetooth.nix
@@ -21,32 +22,25 @@
     ../common/services/fwupd.nix
   ];
 
+  jovian.steam = {
+    enable = true;
+    useStockEnvironment = false;
+    environment = {
+      "INTEL_DEBUG" = "noccs";
+    };
+  };
+
   nixpkgs.hostPlatform = "x86_64-linux";
 
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-      inherit pkgs;
-    };
-  };
-
-  environment.systemPackages = [config.nur.repos.ataraxiasjel.waydroid-script];
-
   hardware = {
+    enableRedistributableFirmware = lib.mkDefault true;
     enableAllFirmware = true;
     nvidia = {
       powerManagement.enable = true;
       modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
     opengl = {
       enable = true;
@@ -57,10 +51,13 @@
   };
 
   #fix Gamescope glitchy graphics intel/nvidia
-  programs.gamescope = {
-    env = {
+  programs.gamescope = lib.mkDefault {
+    env = lib.mkDefault {
       "INTEL_DEBUG" = "noccs";
     };
+  };
+  programs.steam.gamescopeSession.env = lib.mkDefault {
+    "INTEL_DEBUG" = "noccs";
   };
 
   services = {
@@ -81,6 +78,7 @@
       };
     };
   };
+
   swapDevices = [
     {
       device = "/.swap/swapfile";
