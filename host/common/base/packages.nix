@@ -7,7 +7,7 @@
     dig
     dua
     duf
-    exa
+    eza
     fd
     file
     git
