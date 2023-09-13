@@ -58,19 +58,18 @@
     ];
 
   workspaceConfig = {
-    format = "{name}";
-    #format = "{name}:{icon} ";
-    #format-icons = {
-    #  "1" = "";
-    #  "2" = "";
-    #  "3" = "󰙯";
-    #  "4" = "";
-    #  "5" = "󰘐";
-    #  "6" = "";
-    #  "7" = "";
-    #  "8" = "󰣙";
-    #  "9" = "";
-    #};
+    format = "{name}:{icon} ";
+    format-icons = {
+      "1" = "";
+      "2" = "";
+      "3" = "󰙯";
+      "4" = "";
+      "5" = "󰘐";
+      "6" = "";
+      "7" = "";
+      "8" = "󰣙";
+      "9" = "";
+    };
     on-click = "activate";
     on-scroll-up = "hyprctl dispatch workspace e-1";
     on-scroll-down = "hyprctl dispatch workspace e+1";
