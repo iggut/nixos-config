@@ -38,6 +38,10 @@
 
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
+  environment.systemPackages = with pkgs; [
+    linuxKernel.packages.linux_6_5.kvmfr
+  ];
+
   hardware = {
     enableRedistributableFirmware = lib.mkDefault true;
     enableAllFirmware = true;

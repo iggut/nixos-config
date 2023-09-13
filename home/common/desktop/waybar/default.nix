@@ -94,7 +94,7 @@ in {
     package = pkgs.waybar;
 
     systemd = {
-      enable = true; #if desktop == "sway" then true else false;
+      enable = false; #if desktop == "sway" then true else false;
     };
 
     settings = [

@@ -6,7 +6,7 @@
     # Enable experimental features without having to specify the argument
     NIX_CONFIG = [
       "experimental-features = nix-command flakes"
-      "access-tokens = github.com=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"
+      #"access-tokens = github.com="
     ];
     nativeBuildInputs = with pkgs; [nix home-manager git];
     shellHook = ''

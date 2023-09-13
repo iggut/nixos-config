@@ -8,7 +8,6 @@
         "usb_storage"
         "usbhid"
         "xhci_pci"
-        "rtsx_pci_sdmmc"
         "thunderbolt"
       ];
       kernelModules = [];
@@ -28,7 +27,7 @@
       "vhost_vsock"
     ];
 
-    # Use the latest Linux kernel, rather than the default LTS
+    # Use the latest Xanmod Linux kernel, rather than the default LTS
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 }

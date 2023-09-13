@@ -18,6 +18,7 @@
     gnome.nixos-gsettings-overrides
     lxappearance-gtk2
     #nerdfonts
+    discord
 
     zeroad
     cataclysm-dda-git
