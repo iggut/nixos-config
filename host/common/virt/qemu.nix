@@ -55,6 +55,7 @@
     distrobox # Wrapper around docker to create and start linux containers - Tool for creating and managing Linux containers using Docker
     virt-manager # Gui for QEMU/KVM Virtualisation - Graphical user interface for managing QEMU/KVM virtual machines
     libguestfs
+    linuxKernel.packages.linux_6_4.kvmfr
   ];
 
   services.udev.extraRules = ''

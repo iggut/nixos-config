@@ -65,6 +65,7 @@
   };
 
   services = {
+    auto-cpufreq.enable = true;
     # use Ambient Light Sensors for auto brightness adjustment
     clight = {
       enable = true;

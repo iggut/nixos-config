@@ -70,6 +70,10 @@
         jsrw = "juju status --watch 1s --color --relations";
         jdl = "juju debug-log";
 
+        rln = "sudo nixos-rebuild switch --flake /home/iggut/nixos-config";
+        rlh = "home-manager switch --flake /home/iggut/nixos-config";
+        rlb = "rln;rlh";
+
         open = "xdg-open";
         k = "kubectl";
 

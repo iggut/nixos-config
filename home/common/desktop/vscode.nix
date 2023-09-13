@@ -18,7 +18,6 @@
       github.copilot
       golang.go
       kamadorueda.alejandra
-      mkhl.direnv
       ms-python.vscode-pylance
       ms-vscode.cpptools
       naumovs.color-highlight

@@ -33,6 +33,18 @@
     };
 
     sessionVariables = {
+      # Set Firefox as default browser for Electron apps
+      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+      # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
+      GST_PLUGIN_SYSTEM_PATH_1_0 =
+        lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
+        (with pkgs.gst_all_1; [
+          gst-plugins-good
+          gst-plugins-bad
+          gst-plugins-ugly
+          gst-libav
+        ]); # Fix from https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
+
       # These are the defaults, and xdg.enable does set them, but due to load
       # order, they're not set before environment.variables are set, which could
       # cause race conditions.
@@ -58,12 +70,19 @@
         gnome-keyring
         nautilus # File manager
         gnome-disk-utility # Disks manager
+        gnome-control-center # Gnome settings
+        gnome-calculator # Calculator
+        file-roller # Archive file manager
+        gnome-themes-extra # Adwaita GTK theme
         gucharmap # GNOME Character Map
         zenity
         dconf-editor
         nixos-gsettings-overrides
       ])
       ++ (with pkgs; [
+        hyprland-autoname-workspaces
+        gnome-online-accounts # Nextcloud integration
+        baobab # Disk usage analyser
         gtk3
         dconf
         gsound

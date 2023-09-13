@@ -122,8 +122,6 @@ in {
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
-
-    #WLR_RENDERER = lib.mkForce "gles2"; testig
   };
 
   systemd.user.services.swaybg = {
@@ -143,4 +141,16 @@ in {
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_QPA_PLATFORMTHEME = "${config.home.sessionVariables.QT_QPA_PLATFORMTHEME}";
   };
+
+  # Gnome control center running in Hypr WMs
+  xdg.desktopEntries.gnome-control-center = {
+    exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
+    icon = "gnome-control-center";
+    name = "Gnome Control Center";
+    terminal = false;
+    type = "Application";
+  };
+
+  # Set gnome control center to open in the online accounts submenu
+  dconf.settings."org/gnome/control-center".last-panel = "online-accounts";
 }
