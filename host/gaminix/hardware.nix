@@ -31,7 +31,10 @@
 
   jovian.steam = {
     enable = true;
-    useStockEnvironment = true;
+    useStockEnvironment = false;
+    environment = {
+      "INTEL_DEBUG" = "noccs";
+    };
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -58,6 +61,16 @@
     };
   };
 
+  #fix Gamescope glitchy graphics intel/nvidia
+  programs.gamescope = lib.mkDefault {
+    env = lib.mkDefault {
+      "INTEL_DEBUG" = "noccs";
+    };
+  };
+  programs.steam.gamescopeSession.env = lib.mkDefault {
+    "INTEL_DEBUG" = "noccs";
+  };
+
   swapDevices = [
     {
       device = "/.swap/swapfile";
@@ -65,6 +78,3 @@
     }
   ];
 }
-#        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${version}/NVIDIA-Linux-x86_64-${version}.run"
-#        "https://download.nvidia.com/XFree86/Linux-x86_64/${version}/NVIDIA-Linux-x86_64-${version}.run"
-

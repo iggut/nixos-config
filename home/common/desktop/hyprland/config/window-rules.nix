@@ -32,7 +32,7 @@ _: {
     "workspace 1 silent, class:startup-alacritty"
     "workspace 2 silent, class:[Ff]irefox"
     "workspace 2 silent, class:[Oo]bsidian"
-    "workspace 3 silent, class:WebCord"
+    "workspace 3 silent, class:discord"
     "workspace 4 silent, class:steam"
     "workspace 5 silent, class:codium-url-handler"
     "workspace 9 silent, class:looking-glass-client"
