@@ -25,7 +25,7 @@ in {
 
   programs = {
     nix-index.enable = true;
-
+    nheko.enable = true;
     mpv.enable = true;
     feh.enable = true;
 

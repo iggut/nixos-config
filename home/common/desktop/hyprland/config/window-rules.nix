@@ -12,9 +12,9 @@ _: {
     "pin, title:^(Picture-in-Picture)$"
 
     "float, class:^(1Password)$"
-    "stayfocused,title:^(Quick Access — 1Password)$"
-    "dimaround,title:^(Quick Access — 1Password)$"
-    "noanim,title:^(Quick Access — 1Password)$"
+    "stayfocused, title:^(Quick Access — 1Password)$"
+    "dimaround, title:^(Quick Access — 1Password)$"
+    "noanim, title:^(Quick Access — 1Password)$"
 
     "float, class:^(org.gnome.*)$"
     "float, class:^(pavucontrol)$"
@@ -27,6 +27,12 @@ _: {
     "float, class:^(code)$"
     "center, class:^(code)$"
     "pin, class:^(code)$"
+    "float, title:^(Open File)(.*)$"
+    "float, title:^(Select a File)(.*)$"
+    "float, title:^(Choose wallpaper)(.*)$"
+    "float, title:^(Open Folder)(.*)$"
+    "float, title:^(Save As)(.*)$"
+    "float, title:^(Library)(.*)$"
 
     # assign windows to workspaces
     "workspace 1 silent, class:startup-alacritty"
@@ -46,8 +52,8 @@ _: {
     "opaque, class:^(looking-glass-client)$"
 
     # steam center and fload + friends list size
-    "size 350 950,class:^(steam)$ title:^(Friends)(.*)$"
-    "float,class:^(steam)$ title:^(Friends)(.*)$"
-    "center,class:^(steam)$ title:^(Friends)(.*)$"
+    "size 350 950, class:^(steam)$ title:^(Friends)(.*)$"
+    "float, class:^(steam)$ title:^(Friends)(.*)$"
+    "center, class:^(steam)$ title:^(Friends)(.*)$"
   ];
 }

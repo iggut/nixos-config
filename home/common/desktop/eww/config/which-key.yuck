@@ -1,5 +1,4 @@
-(defvar binds @hyprbinds@)
-; (defvar binds "[[{\"keybind\": \"SUPER+W\", \"label\": \"exec, kill\"}], [], []]")
+(defvar binds "[[{\"keybind\": \"SUPER+W\", \"label\": \"exec, kill\"}], [], []]")
 (defvar show-which-key false)
 
 (defwidget wk-bind [keybind label]
