@@ -49,6 +49,20 @@
     pulseaudio
     jaq
     socat
+    bash
+    blueberry
+    bluez
+    brillo
+    findutils
+    gawk
+    gnused
+    imagemagick
+    jc
+    procps
+    udev
+    upower
+    util-linux
+    wlogout
     ##eww experiment##
   ];
 }
