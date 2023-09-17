@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluezFull;
+    package = pkgs.bluez;
     settings = {
       General = {
         Experimental = true;
@@ -10,5 +10,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ blueberry ];
+  environment.systemPackages = with pkgs; [blueberry];
 }

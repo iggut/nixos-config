@@ -42,7 +42,7 @@
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_6_4.kvmfr
+    linuxKernel.packages.linux_6_5.kvmfr
   ];
 
   hardware = {
@@ -59,16 +59,6 @@
         nvidia-vaapi-driver
       ];
     };
-  };
-
-  #fix Gamescope glitchy graphics intel/nvidia
-  programs.gamescope = lib.mkDefault {
-    env = lib.mkDefault {
-      "INTEL_DEBUG" = "noccs";
-    };
-  };
-  programs.steam.gamescopeSession.env = lib.mkDefault {
-    "INTEL_DEBUG" = "noccs";
   };
 
   swapDevices = [

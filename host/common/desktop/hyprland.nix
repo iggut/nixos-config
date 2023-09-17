@@ -80,7 +80,6 @@
         nixos-gsettings-overrides
       ])
       ++ (with pkgs; [
-        hyprland-autoname-workspaces
         gnome-online-accounts # Nextcloud integration
         baobab # Disk usage analyser
         gtk3
@@ -157,7 +156,6 @@
     hyprland = {
       enableNvidiaPatches = true;
       enable = true;
-      package = pkgs.hyprland;
       xwayland = {
         enable = true;
       };

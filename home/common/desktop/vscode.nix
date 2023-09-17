@@ -15,7 +15,6 @@
       dbaeumer.vscode-eslint
       eamodio.gitlens
       esbenp.prettier-vscode
-      github.copilot
       golang.go
       kamadorueda.alejandra
       ms-python.vscode-pylance
@@ -34,7 +33,6 @@
     userSettings = {
       breadcrumbs.enabled = false;
       emmet.useInlineCompletions = true;
-      github.copilot.enable."*" = true;
       security.workspace.trust.enabled = false;
       black-formatter.path = lib.getExe pkgs.black;
       stylua.styluaPath = lib.getExe pkgs.stylua;
@@ -55,8 +53,8 @@
         cursorSmoothCaretAnimation = "on";
         cursorWidth = 2;
         find.addExtraSpaceOnTop = false;
-        fontFamily = "'Phosphor', 'monospace', monospace";
-        fontSize = 13;
+        fontFamily = "'JetBrainsMono Nerd Font'";
+        fontSize = 15;
         formatOnSave = true;
         inlayHints.enabled = "off";
         inlineSuggest.enabled = true;
@@ -84,12 +82,6 @@
         };
       };
 
-      explorer = {
-        fontSize = 12;
-        confirmDragAndDrop = false;
-        confirmDelete = true;
-      };
-
       files = {
         eol = "\n";
         insertFinalNewline = true;
@@ -100,22 +92,6 @@
         autofetch = true;
         confirmSync = false;
         enableSmartCommit = true;
-      };
-
-      terminal.integrated = {
-        cursorBlinking = true;
-        cursorStyle = "line";
-        cursorWidth = 2;
-        fontFamily = "'monospace'";
-        fontSize = 13;
-        smoothScrolling = true;
-      };
-
-      window = {
-        menuBarVisibility = "toggle";
-        nativeTabs = true;
-        titleBarStyle = "custom";
-        zoomLevel = 1;
       };
 
       workbench = {
