@@ -20,6 +20,7 @@
     ../common/hardware/bluetooth.nix
 
     ../common/services/fwupd.nix
+    ./cosmic.nix # Cosmic PoP test
   ];
 
   jovian.steam = {
