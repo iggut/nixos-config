@@ -1,4 +1,8 @@
 {
+  pkgs,
+  hostname,
+  ...
+}: {
   programs = {
     zsh = {
       enable = true;
@@ -70,9 +74,9 @@
         jsrw = "juju status --watch 1s --color --relations";
         jdl = "juju debug-log";
 
-        rln = "sudo nixos-rebuild switch --flake /home/iggut/nixos-config";
-        rlh = "home-manager switch --flake /home/iggut/nixos-config";
-        rlu = "sudo nix flake update /home/iggut/nixos-config";
+        rln = "sudo nixos-rebuild switch --flake $HOME/nixos-config#${hostname}";
+        rlh = "home-manager switch --flake $HOME/nixos-config#$USER@${hostname}";
+        rlu = "sudo nix flake update $HOME/nixos-config";
         rlb = "rln;rlh";
 
         open = "xdg-open";

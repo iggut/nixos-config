@@ -7,7 +7,7 @@
     [
       ./embr.nix
       ./docker.nix
-      #./lxd.nix
+      ./lxd.nix
       ./multipass.nix
       ./qemu.nix
     ] # Include quickemu if a desktop is defined

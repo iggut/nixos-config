@@ -69,6 +69,7 @@
         dconf-editor
         gnome-keyring
         nautilus # File manager
+        gnome-boxes
         gnome-disk-utility # Disks manager
         gnome-control-center # Gnome settings
         gnome-calculator # Calculator
@@ -87,8 +88,7 @@
         gsound
         gcr
         polkit_gnome
-        ananicy-cpp-rules
-        input-leap_git
+        input-leap
         catppuccin-gtk
         catppuccin-kvantum
         glib
@@ -96,8 +96,6 @@
         gsettings-desktop-schemas
       ]);
   };
-
-  chaotic.appmenu-gtk3-module.enable = true;
 
   services = {
     dbus = {
