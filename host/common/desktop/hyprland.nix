@@ -69,7 +69,6 @@
         dconf-editor
         gnome-keyring
         nautilus # File manager
-        gnome-boxes
         gnome-disk-utility # Disks manager
         gnome-control-center # Gnome settings
         gnome-calculator # Calculator

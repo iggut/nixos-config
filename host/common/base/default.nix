@@ -42,6 +42,8 @@ in {
   };
 
   services = {
+    hardware.openrgb.enable = true;
+    ratbagd.enable = true; # Gaming mouse stuff
     printing.enable = true;
     printing.drivers = [
       pkgs.gutenprint

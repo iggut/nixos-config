@@ -18,6 +18,7 @@
     killall
     lzip
     pciutils
+    piper
     python3
     ripgrep
     rsync
@@ -34,5 +35,6 @@
     pantheon.sideload
     comma
     nwg-panel
+    virtiofsd
   ];
 }

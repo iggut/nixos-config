@@ -21,6 +21,7 @@
     wmctrl
     mpd
     swaybg
+    openrgb-with-all-plugins
     #sfwbar #task bar - tray again one day
     glib
     gsettings-desktop-schemas

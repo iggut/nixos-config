@@ -242,6 +242,10 @@ in {
       # sudo ln -s ~/.local/share/nwg-drawer /usr/share/nwg-drawer
       recursive = true;
     };
+    ".config/nwg-drawer/drawer.css" = {
+      source = ./config/nwg/nwg-drawer/drawer.css;
+      recursive = true;
+    };
 
     # Add btop config
     ".config/btop/btop.conf" = {
