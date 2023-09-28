@@ -1,11 +1,11 @@
-{ theme, ... }: {
+{theme, ...}: {
   programs.zathura = {
     enable = true;
     options = {
       recolor = true;
       selection-clipboard = "clipboard";
 
-      # Catppuccin Macchiato
+      # Catppuccin Mocha
       default-fg = "${theme.colours.text}";
       default-bg = "${theme.colours.bg}";
       completion-bg = "${theme.colours.surface0}";

@@ -1,8 +1,12 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.helix = {
     enable = true;
     settings = {
-      theme = "catppuccin_macchiato";
+      theme = "catppuccin_mocha";
       editor = {
         bufferline = "multiple";
         color-modes = true;
@@ -17,7 +21,7 @@
           render = true;
         };
         text-width = 100;
-        rulers = [ 100 ];
+        rulers = [100];
       };
     };
   };

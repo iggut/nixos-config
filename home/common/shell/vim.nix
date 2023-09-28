@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -83,7 +83,7 @@
         type = "lua";
         config = ''
           require('catppuccin').setup {
-              flavour = 'macchiato',
+              flavour = 'mocha',
               term_colors = true,
           }
           vim.api.nvim_command 'colorscheme catppuccin'

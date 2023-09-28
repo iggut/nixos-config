@@ -42,7 +42,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {color-scheme = "prefer-dark";};
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Mocha-Compact-Mauve-dark";
+      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
     };
   };
 }

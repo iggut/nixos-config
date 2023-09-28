@@ -1,27 +1,27 @@
 rec {
   colours = rec {
-    inherit (catppuccin-macchiato) pink red yellow green;
-    inherit (catppuccin-macchiato) subtext0 subtext1 text;
-    inherit (catppuccin-macchiato) overlay0 overlay1 overlay2;
-    inherit (catppuccin-macchiato) surface0 surface1 surface2;
+    inherit (catppuccin-mocha) pink red yellow green;
+    inherit (catppuccin-mocha) subtext0 subtext1 text;
+    inherit (catppuccin-mocha) overlay0 overlay1 overlay2;
+    inherit (catppuccin-mocha) surface0 surface1 surface2;
 
     accent = darkBlue;
-    black = catppuccin-macchiato.crust;
-    white = catppuccin-macchiato.rosewater;
-    lightPink = catppuccin-macchiato.flamingo;
-    lightRed = catppuccin-macchiato.maroon;
-    orange = catppuccin-macchiato.peach;
-    cyan = catppuccin-macchiato.teal;
-    blue = catppuccin-macchiato.sapphire;
-    darkBlue = catppuccin-macchiato.blue;
-    lightBlue = catppuccin-macchiato.sky;
-    purple = catppuccin-macchiato.mauve;
-    lightPurple = catppuccin-macchiato.lavender;
-    bg = catppuccin-macchiato.base;
-    bgDark = catppuccin-macchiato.mantle;
+    black = catppuccin-mocha.crust;
+    white = catppuccin-mocha.rosewater;
+    lightPink = catppuccin-mocha.flamingo;
+    lightRed = catppuccin-mocha.maroon;
+    orange = catppuccin-mocha.peach;
+    cyan = catppuccin-mocha.teal;
+    blue = catppuccin-mocha.sapphire;
+    darkBlue = catppuccin-mocha.blue;
+    lightBlue = catppuccin-mocha.sky;
+    purple = catppuccin-mocha.mauve;
+    lightPurple = catppuccin-mocha.lavender;
+    bg = catppuccin-mocha.base;
+    bgDark = catppuccin-mocha.mantle;
   };
 
-  catppuccin-macchiato = {
+  catppuccin-mocha = {
     rosewater = "#f5e0dc";
     flamingo = "#f2cdcd";
     pink = "#f5c2e7";

@@ -27,7 +27,7 @@ in {
   wallpaper = ./wallpapers/space-clouds.png;
 
   gtkTheme = {
-    name = "Catppuccin-Mocha-Compact-Mauve-dark";
+    name = "Catppuccin-Mocha-Compact-Mauve-Dark";
     package = pkgs.catppuccin-gtk.override {
       accents = ["mauve"];
       size = "compact";

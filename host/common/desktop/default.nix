@@ -120,7 +120,7 @@ in {
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk]; # Needed for steam file picker
 
   environment.variables = {
-    GTK_THEME = "Catppuccin-Mocha-Compact-Mauve-dark";
+    GTK_THEME = "Catppuccin-Mocha-Compact-Mauve-Dark";
     GTK_ICON_THEME = "Papirus-Dark";
   };
 

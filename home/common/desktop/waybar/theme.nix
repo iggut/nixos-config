@@ -72,7 +72,7 @@
       /*
       extend pill size, vertical then horizontal
       */
-      box-shadow = mkLiteral "1 1 2 1 rgba(0, 0, 0, 0.4)";
+
       /*
       pill background shadows
       */
