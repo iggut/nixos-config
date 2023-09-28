@@ -31,10 +31,10 @@
 
   jovian.steam = {
     enable = true;
-    useStockEnvironment = false;
-    environment = {
-      "INTEL_DEBUG" = "noccs";
-    };
+    #useStockEnvironment = false;
+    #environment = {
+    #  "INTEL_DEBUG" = "noccs";
+    #};
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
