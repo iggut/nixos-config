@@ -23,10 +23,10 @@
   ];
 
   # Windows game drive nvme
-  fileSystems."/run/media/iggut/gamedisk" = {
-    device = "/dev/disk/by-uuid/9E049FCD049FA735";
-    fsType = "ntfs";
-    options = ["uid=1000" "gid=1000" "nodev" "nofail" "rw" "user" "exec" "umask=000"];
+  fileSystems."/run/media/iggut/share" = {
+    device = "/dev/disk/by-uuid/1de78f65-6097-423f-ad63-406ab9b11752";
+    fsType = "btrfs";
+    options = ["uid=1000" "gid=1000" "rw" "user" "exec" "umask=000"];
   };
 
   jovian.steam = {

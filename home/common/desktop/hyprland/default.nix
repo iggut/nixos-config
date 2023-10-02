@@ -91,7 +91,7 @@ in {
           ignore_opacity = true;
           special = true;
         };
-        multisample_edges = true;
+        #multisample_edges = true;
         active_opacity = 0.97;
         inactive_opacity = 0.88;
         fullscreen_opacity = 1.0;
