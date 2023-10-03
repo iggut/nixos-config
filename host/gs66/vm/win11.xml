@@ -1,0 +1,162 @@
+<domain type="kvm">
+  <name>win11</name>
+  <uuid>05776f22-15b8-4e4f-ae00-047d63bfd6fc</uuid>
+  <metadata>
+    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
+      <libosinfo:os id="http://microsoft.com/win/10"/>
+    </libosinfo:libosinfo>
+  </metadata>
+  <memory unit="KiB">25165824</memory>
+  <currentMemory unit="KiB">25165824</currentMemory>
+  <vcpu placement="static">18</vcpu>
+  <iothreads>1</iothreads>
+  <cputune>
+    <vcpupin vcpu="0" cpuset="0"/>
+    <vcpupin vcpu="1" cpuset="12"/>
+    <vcpupin vcpu="2" cpuset="1"/>
+    <vcpupin vcpu="3" cpuset="13"/>
+    <vcpupin vcpu="4" cpuset="2"/>
+    <vcpupin vcpu="5" cpuset="14"/>
+    <vcpupin vcpu="6" cpuset="3"/>
+    <vcpupin vcpu="7" cpuset="15"/>
+    <vcpupin vcpu="8" cpuset="4"/>
+    <vcpupin vcpu="9" cpuset="16"/>
+    <vcpupin vcpu="10" cpuset="5"/>
+    <vcpupin vcpu="11" cpuset="17"/>
+    <vcpupin vcpu="12" cpuset="6"/>
+    <vcpupin vcpu="13" cpuset="18"/>
+    <vcpupin vcpu="14" cpuset="7"/>
+    <vcpupin vcpu="15" cpuset="19"/>
+    <vcpupin vcpu="16" cpuset="8"/>
+    <vcpupin vcpu="17" cpuset="20"/>
+    <emulatorpin cpuset="9-10,21-22"/>
+  </cputune>
+  <os>
+    <type arch="x86_64" machine="q35">hvm</type>
+    <loader readonly="yes" type="pflash">/run/libvirt/nix-ovmf/OVMF_CODE.fd</loader>
+    <nvram>/var/lib/libvirt/qemu/nvram/win11_VARS.fd</nvram>
+    <boot dev="hd"/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv>
+      <relaxed state="on"/>
+      <vapic state="on"/>
+      <spinlocks state="on" retries="8191"/>
+      <vendor_id state="on" value="1234567890ab"/>
+    </hyperv>
+    <kvm>
+      <hidden state="on"/>
+    </kvm>
+    <vmport state="off"/>
+  </features>
+  <cpu mode="host-passthrough" check="partial">
+    <topology sockets="1" dies="1" cores="9" threads="2"/>
+    <cache mode="passthrough"/>
+    <feature policy="require" name="invtsc"/>
+    <feature policy="require" name="topoext"/>
+  </cpu>
+  <clock offset="localtime">
+    <timer name="tsc" present="yes" mode="native"/>
+    <timer name="rtc" tickpolicy="catchup"/>
+    <timer name="pit" tickpolicy="delay"/>
+    <timer name="hpet" present="no"/>
+    <timer name="hypervclock" present="yes"/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <pm>
+    <suspend-to-mem enabled="yes"/>
+    <suspend-to-disk enabled="no"/>
+  </pm>
+  <devices>
+    <emulator>/run/libvirt/nix-emulators/qemu-system-x86_64</emulator>
+    <controller type="pci" index="0" model="pcie-root"/>
+    <controller type="pci" index="1" model="pcie-root-port">
+      <model name="pcie-root-port"/>
+      <target chassis="1" port="0x10"/>
+      <address type='pci' domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
+    </controller>
+    <controller type="usb" index="0" model="qemu-xhci" ports="15">
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x05" function="0x0"/>
+    </controller>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x06" function="0x0"/>
+    </hostdev>
+    <interface type="bridge">
+      <mac address="52:54:00:56:d9:73"/>
+      <source bridge="vmbridge0"/>
+      <model type="virtio"/>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x03" function="0x0"/>
+    </interface>
+    <input type="mouse" bus="ps2"/>
+    <input type="keyboard" bus="ps2"/>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x0a" slot="0x00" function="0x0"/>
+      </source>
+      <rom file="/var/lib/libvirt/vbios/patched-bios.rom"/>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x02" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x0a" slot="0x00" function="0x1"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x04" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x0a" slot="0x00" function="0x2"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x07" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x0a" slot="0x00" function="0x3"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x09" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x07" slot="0x00" function="0x0"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x0a" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x07" slot="0x00" function="0x1"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x0b" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x07" slot="0x00" function="0x3"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x0d" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x0c" slot="0x00" function="0x3"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x10" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x0c" slot="0x00" function="0x4"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x11" function="0x0"/>
+    </hostdev>
+    <memballoon model="virtio" autodeflate="on">
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x08" function="0x0"/>
+    </memballoon>
+    <tpm model="tpm-tis">
+      <backend type="emulator" version="2.0" persistent_state="yes">
+      </backend>
+    </tpm>
+  </devices>
+</domain>

@@ -20,6 +20,8 @@
     ../common/hardware/bluetooth.nix
 
     ../common/services/fwupd.nix
+
+    ./vm
   ];
 
   jovian.steam = {
