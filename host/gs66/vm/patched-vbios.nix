@@ -1,9 +1,6 @@
-{ pkgs, secrets, ... }:
-
-with pkgs;
-
-let vbiosPatcher =
-  stdenv.mkDerivation {
+{pkgs, ...}:
+with pkgs; let
+  vbiosPatcher = stdenv.mkDerivation {
     name = "vbios-patcher";
 
     src = pkgs.fetchgit {
@@ -18,16 +15,16 @@ let vbiosPatcher =
     '';
   };
 in
-stdenv.mkDerivation {
-  name = "patched-vbios";
+  stdenv.mkDerivation {
+    name = "patched-vbios";
 
-  buildInputs = [ pkgs.python3 ];
+    buildInputs = [pkgs.python3];
 
-  src = secrets.rtxRom;
-  dontUnpack = true;
+    src = "./rtx2060m.rom";
+    dontUnpack = true;
 
-  installPhase = ''
-    mkdir -p $out
-    python ${vbiosPatcher}/nvidia_vbios_vfio_patcher.py -i $src -o $out/patched.rom --skip-the-very-important-warning
-  '';
-}
+    installPhase = ''
+      mkdir -p $out
+      python ${vbiosPatcher}/nvidia_vbios_vfio_patcher.py -i $src -o $out/patched.rom --skip-the-very-important-warning
+    '';
+  }

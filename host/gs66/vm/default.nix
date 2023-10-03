@@ -2,7 +2,6 @@
 {
   config,
   pkgs,
-  secrets,
   ...
 }: let
   # https://github.com/PassthroughPOST/VFIO-Tools/blob/0bdc0aa462c0acd8db344c44e8692ad3a281449a/libvirt_hooks/qemu
@@ -42,8 +41,6 @@
   '';
 in {
   config = {
-    users.users.shadaj.extraGroups = ["libvirtd" "kvm"];
-
     boot.kernelModules = ["kvm-intel" "vfio-pci"];
     boot.extraModprobeConfig = "options kvm_intel nested=1";
 
@@ -58,22 +55,13 @@ in {
 
       qemu.ovmf = {
         enable = true;
-        packages = [
-          (pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-          })
-          .fd
-        ];
       };
 
-      onBoot = "ignore";
-      onShutdown = "shutdown";
       extraConfig = "log_filters=\"3:remote 4:event 3:util.json 3:rpc 1:*\"\nlog_outputs=\"1:file:/var/log/libvirt/libvirtd.log\"";
     };
 
     environment.systemPackages = with pkgs; [
-      virtmanager
+      virt-manager
     ];
 
     systemd.services.libvirtd = {
@@ -82,7 +70,7 @@ in {
       path = with pkgs; [libvirt procps utillinux kmod swtpm];
       preStart = ''
         mkdir -p /var/lib/libvirt/vbios
-        ln -sf ${(import ./patched-vbios.nix {inherit pkgs secrets;})}/patched.rom /var/lib/libvirt/vbios/patched-bios.rom
+        ln -sf ${(import ./patched-vbios.nix {inherit pkgs;})}/patched.rom /var/lib/libvirt/vbios/patched-bios.rom
 
         mkdir -p /var/lib/libvirt/qemu
         ln -sf ${./win11.xml} /var/lib/libvirt/qemu/win11.xml
