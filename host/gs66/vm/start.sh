@@ -1,33 +1,28 @@
-#!/bin/sh
-
-nvidia-smi -pm 0
+#!/run/current-system/sw/bin/bash
 
 # Stop display manager
 systemctl stop display-manager.service
-#hyprctl dispatch exit
+killall gdm-x-session
+killall gdm-wayland-session
+killall gdm-session
 
 # Unbind VTconsoles
 echo 0 > /sys/class/vtconsole/vtcon0/bind
 echo 0 > /sys/class/vtconsole/vtcon1/bind
 
-# Unbind EFI-Framebuffer
-echo "efi-framebuffer.0" > /sys/bus/platform/drivers/efi-framebuffer/unbind
+# Unbind EFI Framebuffer
+echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
 
-# Avoid a Race condition by waiting 2 seconds. This can be calibrated to be shorter or longer if required for your system
+# Avoid race condition
 sleep 5
 
-# Unload all Nvidia drivers
+# Unload NVIDIA kernel modules
 modprobe -r nvidia_drm
 modprobe -r nvidia_modeset
 modprobe -r nvidia_uvm
 modprobe -r nvidia
-# Looks like these might need to be unloaded on Ryzen Systems. Not sure yet.
-modprobe -r ipmi_devintf
-modprobe -r ipmi_msghandler
 
-virsh nodedev-list
-
-# Unbind the GPU from display driver
+# Detach GPU devices from host
 virsh nodedev-detach pci_0000_01_00_0
 virsh nodedev-detach pci_0000_01_00_1
 virsh nodedev-detach pci_0000_01_00_2

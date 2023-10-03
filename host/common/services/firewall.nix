@@ -10,7 +10,7 @@
       "gaminix"
       "thor"
     ];
-    tcpPorts = [22000];
+    tcpPorts = [22000 5900];
     udpPorts = [22000 21027];
   };
 in {

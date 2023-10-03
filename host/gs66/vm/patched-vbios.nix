@@ -20,7 +20,7 @@ in
 
     buildInputs = [pkgs.python3];
 
-    src = "./rtx2060m.rom";
+    src = ./rtx2060m.rom;
     dontUnpack = true;
 
     installPhase = ''
