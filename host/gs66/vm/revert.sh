@@ -12,10 +12,10 @@ virsh nodedev-reattach pci_0000_01_00_2
 virsh nodedev-reattach pci_0000_01_00_3
 
 # Load NVIDIA kernel modules
-modprobe nvidia
-modprobe nvidia_uvm
-modprobe nvidia_modeset
-modprobe nvidia_drm
+modprobe -a nvidia
+modprobe -a nvidia_uvm
+modprobe -a nvidia_modeset
+modprobe -a nvidia_drm
 
 # Avoid race condition
 sleep 5

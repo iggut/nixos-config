@@ -17,10 +17,10 @@ echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
 sleep 5
 
 # Unload NVIDIA kernel modules
-modprobe -r nvidia_drm
-modprobe -r nvidia_modeset
-modprobe -r nvidia_uvm
-modprobe -r nvidia
+modprobe -r -a nvidia_drm
+modprobe -r -a nvidia_modeset
+modprobe -r -a nvidia_uvm
+modprobe -r -a nvidia
 
 # Detach GPU devices from host
 virsh nodedev-detach pci_0000_01_00_0
