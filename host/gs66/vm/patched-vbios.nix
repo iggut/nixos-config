@@ -20,7 +20,7 @@ in
 
     buildInputs = [pkgs.python3];
 
-    src = ./2060gs66se.rom;
+    src = ./vbios2.rom;
     dontUnpack = true;
 
     installPhase = ''
