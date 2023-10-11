@@ -41,8 +41,9 @@
 
     # Use the latest Linux kernel, rather than the default LTS
     #kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
+    #kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     #kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   };
 
   systemd.tmpfiles.rules = [

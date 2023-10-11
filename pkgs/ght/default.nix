@@ -1,75 +1,51 @@
 {
+  fetchFromGitHub,
   lib,
-  pkgs,
-  ...
-}: let
-  pname = "ght";
+  stdenv,
+  python3Packages,
+}:
+# FIX PACKAGE
+stdenv.mkDerivation rec {
+  pname = "cassowary";
+  version = "0.4";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "canonical";
+  src = fetchFromGitHub {
+    owner = "casualsnek";
     repo = pname;
-    # When bumping the version, a new 'yarn.lock' will need to be generated.
-    # To do this:
-    # - Clone the source code, cd into the directory
-    # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
-    # - Run 'yarn install'
-    # - Copy the new 'yarn.lock' into this directory, overwriting the old
-    rev = "50e45944b34ea1355f6654fc1c1f00c051d29aff";
-    sha256 = "sha256-XkJ3Jh3SyhZJzXmKrbCaLmilL2+W4eu/G1sHNkI3Y8Y=";
+    rev = "v${version}";
+    sha256 = "sha256-bU2dWHl6CiyQAwhBF3ESLcdyzzn8q7VtFvgglj/GmGg=";
   };
 
-  packageJSON = "${src}/package.json";
-  # TODO: Try to drop this "forked" yarn.lock and generate it somehow?
-  yarnLock = ./yarn.lock;
+  nativeBuildInputs = with python3Packages; [python build];
 
-  # Read the package version from the 'package.json' in the repo
-  inherit ((builtins.fromJSON (builtins.readFile packageJSON))) version;
+  propagatedBuildInputs = with python3Packages; [setuptools wheel];
 
-  # Grab the node_modules required to build/run the ght tool
-  yarnDeps = pkgs.mkYarnModules {
-    inherit version packageJSON yarnLock;
-    pname = "ght-yarn-deps";
+  patchPhase = ''
+    patchShebangs app-linux/build.sh
+  '';
+
+  buildPhase = ''
+    cd app-linux
+    python3 -m build --no-isolation
+    tar xzf dist/cassowary-0.4.tar.gz -C dist
+  '';
+
+  installPhase = ''
+    ls dist/${pname}-${version}
+    mv dist/${pname}-${version} $out
+  '';
+
+  meta = with lib; {
+    description = "Run Windows Applications on Linux as if they are native";
+    longDescription = ''
+      Run Windows Applications on Linux as if they are native,
+      Use linux applications to launch files files located in
+      windows vm without needing to install applications on vm.
+      With easy to use configuration GUI.
+    '';
+    homepage = "https://github.com/casualsnek/cassowary";
+    license = licenses.gpl2Only;
+    maintainers = with maintainers; [elxreno];
+    platforms = platforms.linux;
   };
-in
-  pkgs.mkYarnPackage {
-    inherit src pname version yarnLock packageJSON;
-
-    nativeBuildInputs = with pkgs; [makeWrapper];
-
-    postPatch = ''
-      substituteInPlace ght \
-          --replace "./index.js" "$out/opt/ght/index.js" \
-          --replace "./package.json" "$out/opt/ght/package.json"
-    '';
-
-    configurePhase = ''
-      ln -s $node_modules node_modules
-    '';
-
-    buildPhase = ''
-      export HOME=$(mktemp -d)
-      yarn --offline build
-    '';
-
-    installPhase = ''
-      mkdir -p $out/bin $out/opt
-
-      # Copy the built tool & node_modules into the output
-      cp -r dist $out/opt/ght
-      ln -sf ${yarnDeps}/node_modules $out/opt/ght/node_modules
-
-      # Copy the 'binary' into place
-      cp ght $out/bin/ght
-
-      # Make sure that chromium is available and puppeteer knows to use it
-      wrapProgram $out/bin/ght \
-          --set PUPPETEER_EXECUTABLE_PATH ${pkgs.chromium.outPath}/bin/chromium
-    '';
-
-    distPhase = "true";
-
-    meta = with lib; {
-      description = "Perform actions in Greenhouse from you terminal.";
-      maintainers = [jnsgruk];
-    };
-  }
+}

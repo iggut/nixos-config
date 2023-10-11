@@ -115,6 +115,10 @@ in {
   #  group = "root";
   #};
 
+  environment.systemPackages = with pkgs; [
+    (python310.withPackages (ps: with ps; [cassowary]))
+  ];
+
   xdg.portal.enable = true;
 
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk]; # Needed for steam file picker

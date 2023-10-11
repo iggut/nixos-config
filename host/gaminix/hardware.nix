@@ -28,12 +28,8 @@
     fsType = "btrfs";
   };
 
-  jovian.steam = {
+  programs.steam = {
     enable = true;
-    #useStockEnvironment = false;
-    #environment = {
-    #  "INTEL_DEBUG" = "noccs";
-    #};
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -48,9 +44,10 @@
     enableRedistributableFirmware = lib.mkDefault true;
     enableAllFirmware = true;
     nvidia = {
+      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
       powerManagement.enable = true;
       modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     opengl = {
       enable = true;

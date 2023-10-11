@@ -1,13 +1,25 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   virtualisation = {
-    docker = {
+    podman = {
       enable = true;
-      storageDriver = "btrfs";
+
+      dockerSocket.enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
     };
+    #docker = {
+    #  enable = true;
+    #  storageDriver = "btrfs";
+    #};
   };
 
   environment.systemPackages = with pkgs; [
     ctop
+    nvidia-podman
     dive
     skopeo
   ];

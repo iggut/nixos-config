@@ -24,11 +24,11 @@ in {
         "input"
         "dialout"
         "plugdev"
+        "lxd"
       ]
       ++ ifExists [
         "docker"
         "render"
-        "lxd"
       ];
 
     openssh.authorizedKeys.keys = [
