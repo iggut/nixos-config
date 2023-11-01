@@ -25,7 +25,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nur.url = "github:nix-community/NUR";
 
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
@@ -46,7 +45,6 @@
     nixpkgs,
     nixpkgs-unstable,
     nix-formatter-pack,
-    chaotic,
     nur,
     ...
   } @ inputs: let
@@ -135,14 +133,12 @@
         "https://cache.nixos.org"
         "https://hyprland.cachix.org"
         "https://jnsgruk.cachix.org"
-        "https://nyx.chaotic.cx"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "jnsgruk.cachix.org-1:Kf9JahXxCf0ElU+Uz7xKvQEQHfUtg2Z45N2NeTxuxV8="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
-        "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       ];
     };
   };

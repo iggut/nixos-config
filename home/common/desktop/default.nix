@@ -52,7 +52,7 @@ in {
         name = "privacy";
         extensions = with firefox-addons; [
           reddit-enhancement-suite
-          enhancer-for-youtube
+          #enhancer-for-youtube
           gesturefy
           protondb-for-steam
           stylus

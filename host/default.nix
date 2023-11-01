@@ -16,7 +16,6 @@
       (modulesPath + "/installer/scan/not-detected.nix")
       (./. + "/${hostname}/boot.nix")
       (./. + "/${hostname}/hardware.nix")
-      inputs.chaotic.nixosModules.default
       inputs.nur.nixosModules.nur
       inputs.nix-index-database.nixosModules.nix-index
 
@@ -91,14 +90,12 @@
         "https://cache.nixos.org"
         "https://hyprland.cachix.org"
         "https://jnsgruk.cachix.org"
-        "https://nyx.chaotic.cx"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "jnsgruk.cachix.org-1:Kf9JahXxCf0ElU+Uz7xKvQEQHfUtg2Z45N2NeTxuxV8="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
-        "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       ];
     };
   };

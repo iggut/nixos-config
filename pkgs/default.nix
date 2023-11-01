@@ -1,7 +1,7 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # Build them using 'nix build .#example' or (legacy) 'nix-build -A example'
 {pkgs ? (import ../nixpkgs.nix) {}}: {
-  cassowary = pkgs.callPackage ./ght {};
+  betaflight-configurator = pkgs.callPackage ./ght {};
   qemu_7 = pkgs.callPackage ./qemu_7.nix {
     stdenv = pkgs.ccacheStdenv;
     inherit (pkgs.darwin.apple_sdk.frameworks) CoreServices Cocoa Hypervisor vmnet;
