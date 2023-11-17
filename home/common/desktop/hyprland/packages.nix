@@ -22,6 +22,10 @@
     mpd
     swaybg
     openrgb-with-all-plugins
+    qgroundcontrol
+    plex
+    jdk11
+    xorg.libXext
     #sfwbar #task bar - tray again one day
     glib
     gsettings-desktop-schemas

@@ -37,7 +37,7 @@
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_6_5.kvmfr
+    linuxKernel.packages.linux_6_6.kvmfr
   ];
 
   hardware = {

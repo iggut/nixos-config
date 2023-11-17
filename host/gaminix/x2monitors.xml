@@ -37,5 +37,20 @@
                 </mode>
             </monitor>
         </logicalmonitor>
+        <logicalmonitor>
+            <x>1920</x>
+            <y>1440</y>
+            <scale>1</scale>
+            <monitor>
+                <monitorspec>
+                    <connector>DP-2</connector>
+                </monitorspec>
+                <mode>
+                    <width>1920</width>
+                    <height>1080</height>
+                    <rate>60.00</rate>
+                </mode>
+            </monitor>
+        </logicalmonitor>
     </configuration>
 </monitors>
