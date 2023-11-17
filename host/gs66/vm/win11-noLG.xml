@@ -1,6 +1,6 @@
-<domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">
-  <name>Windows-11</name>
-  <uuid>e4b15b7e-81f1-4383-85c8-ffc5a72e1c3e</uuid>
+<domain type="kvm">
+  <name>Windows-11-noLG</name>
+  <uuid>551c65d5-88d3-41da-99a1-2073c9494844</uuid>
   <metadata>
     <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
       <libosinfo:os id="http://microsoft.com/win/11"/>
@@ -8,15 +8,11 @@
   </metadata>
   <memory unit="KiB">16777216</memory>
   <currentMemory unit="KiB">16777216</currentMemory>
-  <memoryBacking>
-    <source type="memfd"/>
-    <access mode="shared"/>
-  </memoryBacking>
   <vcpu placement="static">26</vcpu>
   <os>
     <type arch="x86_64" machine="pc-q35-8.0">hvm</type>
     <loader readonly="yes" type="pflash">/run/libvirt/nix-ovmf/OVMF_CODE.fd</loader>
-    <nvram template="/run/libvirt/nix-ovmf/OVMF_VARS.fd">/var/lib/libvirt/qemu/nvram/Windows-11_VARS.fd</nvram>
+    <nvram template="/run/libvirt/nix-ovmf/OVMF_VARS.fd">/var/lib/libvirt/qemu/nvram/Windows-11-noLG_VARS.fd</nvram>
     <bootmenu enable="yes"/>
   </os>
   <features>
@@ -56,7 +52,7 @@
   </clock>
   <on_poweroff>destroy</on_poweroff>
   <on_reboot>restart</on_reboot>
-  <on_crash>restart</on_crash>
+  <on_crash>destroy</on_crash>
   <pm>
     <suspend-to-mem enabled="no"/>
     <suspend-to-disk enabled="no"/>
@@ -152,15 +148,8 @@
     <controller type="virtio-serial" index="0">
       <address type="pci" domain="0x0000" bus="0x03" slot="0x00" function="0x0"/>
     </controller>
-    <filesystem type="mount" accessmode="passthrough">
-      <driver type="virtiofs"/>
-      <binary path="/run/current-system/sw/bin/virtiofsd" xattr="on"/>
-      <source dir="/run/media/iggut/share"/>
-      <target dir="linux-share"/>
-      <address type="pci" domain="0x0000" bus="0x08" slot="0x00" function="0x0"/>
-    </filesystem>
     <interface type="network">
-      <mac address="52:54:00:2f:2b:c9"/>
+      <mac address="52:54:00:f0:e7:a6"/>
       <source network="default"/>
       <model type="virtio"/>
       <address type="pci" domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
@@ -191,11 +180,9 @@
       <model type="none"/>
     </video>
     <hostdev mode="subsystem" type="pci" managed="yes">
-      <driver name="vfio"/>
       <source>
         <address domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
       </source>
-      <rom file="/home/iggut/documents/vbios/GA104.rom"/>
       <address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0"/>
     </hostdev>
     <hostdev mode="subsystem" type="pci" managed="yes">
@@ -209,8 +196,22 @@
         <address domain="0x0000" bus="0x03" slot="0x00" function="0x0"/>
       </source>
       <boot order="2"/>
-      <rom bar="on"/>
+      <rom bar="off"/>
       <address type="pci" domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="usb" managed="yes">
+      <source>
+        <vendor id="0x046d"/>
+        <product id="0xc52b"/>
+      </source>
+      <address type="usb" bus="0" port="1"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="usb" managed="yes">
+      <source>
+        <vendor id="0x25a7"/>
+        <product id="0x2420"/>
+      </source>
+      <address type="usb" bus="0" port="2"/>
     </hostdev>
     <redirdev bus="usb" type="spicevmc">
       <address type="usb" bus="0" port="4"/>
@@ -221,10 +222,4 @@
     <watchdog model="itco" action="reset"/>
     <memballoon model="none"/>
   </devices>
-  <qemu:commandline>
-    <qemu:arg value="-device"/>
-    <qemu:arg value="{&quot;driver&quot;:&quot;ivshmem-plain&quot;,&quot;id&quot;:&quot;shmem0&quot;,&quot;memdev&quot;:&quot;looking-glass&quot;}"/>
-    <qemu:arg value="-object"/>
-    <qemu:arg value="{&quot;qom-type&quot;:&quot;memory-backend-file&quot;,&quot;id&quot;:&quot;looking-glass&quot;,&quot;mem-path&quot;:&quot;/dev/kvmfr0&quot;,&quot;size&quot;:134217728,&quot;share&quot;:true}"/>
-  </qemu:commandline>
 </domain>
